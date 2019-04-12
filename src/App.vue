@@ -46,7 +46,7 @@
     >
       {{ $t(notification_text) }}
       <v-btn
-        color="#9D6447"
+        color="#24919B"
         flat
         @click="notification = ''"
       >
