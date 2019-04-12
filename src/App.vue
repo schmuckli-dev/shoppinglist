@@ -53,7 +53,7 @@
         {{ $t("general.close") }}
       </v-btn>
     </v-snackbar>
-    <v-btn fab dark color="#9D6447" v-if="isLoggedIn" fixed right bottom>
+    <v-btn fab dark color="#24919B" v-if="isLoggedIn" fixed right bottom>
         <v-icon @click="openNew" dark>add</v-icon>
     </v-btn>
   </v-app>
