@@ -7,6 +7,8 @@ import Login from '@/views/Login';
 import Register from '@/views/Register';
 import Settings from '@/views/Settings';
 
+import List from '@/views/List';
+
 Vue.use(Router);
 
 const router = new Router({
@@ -33,6 +35,14 @@ const router = new Router({
       path: '/home',
       name: 'Home',
       component: Home,
+      meta: {
+        requiresAuth: true
+      }
+    },
+    {
+      path: '/list',
+      name: 'List',
+      component: List,
       meta: {
         requiresAuth: true
       }

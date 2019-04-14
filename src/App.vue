@@ -36,7 +36,7 @@
       <footer>
         <p>{{ $t("general.thisIsAProjectBy") }}
           <a href="https://www.schmuckli.net/" target="_blank">Julian Schmuckli</a> |
-          <a href="https://github.com/julianschmuckli/wallet" target="_blank">{{ $t("general.viewOnGithub") }}</a></p>
+          <a href="https://github.com/julianschmuckli/shoppinglist" target="_blank">{{ $t("general.viewOnGithub") }}</a></p>
       </footer>
     </v-content>
 

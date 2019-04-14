@@ -2,7 +2,7 @@
   <v-container>
     <v-layout row wrap>
       <v-flex lg3 md4 sm6 xs12 v-for="list in lists" :key="list.id">
-        <List :title="list.name" />
+        <List :list="list" />
       </v-flex>
     </v-layout>
   </v-container>
