@@ -1,8 +1,8 @@
 <template>
-  <v-card color="#fff" class="white--text">
+  <v-card color="#fff" class="shoppinglist_list">
     <v-card-title primary-title>
       <div>
-        <div class="headline" style="color:#000;">{{ title }}</div>
+        <div class="headline">{{ title }}</div>
       </div>
     </v-card-title>
   </v-card>
@@ -18,3 +18,8 @@ export default{
   }
 }
 </script>
+<style scoped>
+.shoppinglist_list{
+  margin: 10px;
+}
+</style>
