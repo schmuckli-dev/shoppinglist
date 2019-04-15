@@ -1,14 +1,14 @@
 <template>
-  <v-card :color="backgroundColor" @click="setPurchased">
+  <v-card :color="backgroundColor" @click="setPurchased" class="product">
     <v-card-title>
       <div class="big">
         <span v-html="bigTitle"></span>
       </div>
       <v-layout>
-        <v-flex xs6>
+        <v-flex xs3>
           {{ amount }}
         </v-flex>
-        <v-flex xs6>
+        <v-flex xs9>
           {{ name }}
         </v-flex>
       </v-layout>
@@ -32,7 +32,7 @@ export default {
       return this.name.charAt(0);
     },
     backgroundColor(){
-      return this.purchased ? "#7D7D7D" : "#42A7B0";
+      return this.purchased ? "#DFDFDF" : "#42A7B0";
     }
   },
   methods: {
@@ -48,6 +48,10 @@ export default {
 <style scoped>
 .v-card__title--primary{
   padding:0;
+}
+.product{
+  margin: 10px;
+  cursor: pointer;
 }
 .big{
   font-size:30px;
