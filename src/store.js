@@ -10,6 +10,6 @@ export const StoreMod = {
     Store.notification = notification;
   },
   setCurrentList(list_data){
-    StoreMod.currentList = list_data;
+    Store.currentList = list_data;
   }
 };

@@ -7,7 +7,7 @@ import Login from '@/views/Login';
 import Register from '@/views/Register';
 import Settings from '@/views/Settings';
 
-import List from '@/views/List';
+import ListView from '@/views/ListView';
 
 Vue.use(Router);
 
@@ -42,7 +42,7 @@ const router = new Router({
     {
       path: '/list',
       name: 'List',
-      component: List,
+      component: ListView,
       meta: {
         requiresAuth: true
       }

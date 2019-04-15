@@ -21,9 +21,9 @@ export default {
     newPasswordRepeat: "New password repeat",
     language: "Language"
   },
-  detail: {
+  list: {
     edit: "Edit",
-    type: "Type",
+    notpurchasedyet: "Not purchased yet",
     delete: "Delete",
     editDescriptionDateTime: "You can change here the date and time of the passport, if it has not proposed correctly."
   },

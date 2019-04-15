@@ -34,7 +34,7 @@ export default {
       .onSnapshot(function(lists) {
         global_this.lists = [];
         lists.forEach(function(list){
-          global_this.lists.push(list.data());
+          global_this.lists.push(Object.assign({id: list.id}, list.data()));
         });
       });
     }
