@@ -6,6 +6,7 @@ import Home from '@/views/Home';
 import Login from '@/views/Login';
 import Register from '@/views/Register';
 import Settings from '@/views/Settings';
+import NewProduct from '@/views/NewProduct';
 
 import ListView from '@/views/ListView';
 
@@ -43,6 +44,14 @@ const router = new Router({
       path: '/list',
       name: 'List',
       component: ListView,
+      meta: {
+        requiresAuth: true
+      }
+    },
+    {
+      path: '/new_product',
+      name: 'new_product',
+      component: NewProduct,
       meta: {
         requiresAuth: true
       }

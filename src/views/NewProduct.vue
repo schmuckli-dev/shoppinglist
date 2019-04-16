@@ -5,7 +5,7 @@
         <v-btn @click="back" flat><v-icon style="margin-right:10px;">keyboard_arrow_left</v-icon> {{ $t("general.back") }}</v-btn>
       </v-flex>
       <v-flex xs6 style="text-align:right;">
-        <v-btn @click="openEditDialog" flat><v-icon style="margin-right:10px;">edit</v-icon> {{ $t("list.edit") }}</v-btn>
+
       </v-flex>
     </v-layout>
     <v-layout row wrap>
@@ -13,9 +13,6 @@
         <Product :amount="product.amount" :name="product.name" :product_id="product.id" :purchased="product.purchased" :list_id="currentListId" />
       </v-flex>
     </v-layout>
-    <v-btn fab dark color="#24919B" fixed right bottom>
-        <v-icon @click="openNewProduct" dark>add</v-icon>
-    </v-btn>
   </v-container>
 </template>
 
@@ -44,7 +41,7 @@ export default {
   },
   methods: {
     back(){
-      this.$router.replace("home");
+      this.$router.replace("list");
     },
     loadProducts(){
       var global_this = this;
@@ -56,9 +53,6 @@ export default {
           global_this.products.push(Object.assign({id: product.id}, product.data()));
         });
       });
-    },
-    openNewProduct(){
-      this.$router.replace("new_product");
     },
     openEditDialog(){
 

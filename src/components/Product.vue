@@ -39,7 +39,8 @@ export default {
     setPurchased(){
       var global_this = this;
       firebase.firestore().collection("users").doc(firebase.auth().currentUser.uid).collection("lists").doc(this.list_id).collection("items").doc(this.product_id).set({
-        purchased: !global_this.purchased
+        purchased: !global_this.purchased,
+        modifiedDate: (new Date()).getTime()
       }, { merge: true });
     }
   }
