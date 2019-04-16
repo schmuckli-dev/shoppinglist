@@ -8,9 +8,10 @@
 
       </v-flex>
     </v-layout>
+    <v-text-field :label="$t('new.product')" v-model="current_product" />
     <v-layout row wrap>
-      <v-flex xs6 sm4 md3 lg2 v-for="product in products" :key="product.id">
-        <Product :amount="product.amount" :name="product.name" :product_id="product.id" :purchased="product.purchased" :list_id="currentListId" />
+      <v-flex xs6 sm4 md3 lg2 v-for="product in suggestions" :key="product.id">
+        <Product :amount="product.amount" :name="product.name" :product_id="product.id" :suggestion="Boolean(true)" :list_id="currentListId" />
       </v-flex>
     </v-layout>
   </v-container>
@@ -25,11 +26,9 @@ export default {
   name: "List",
   data(){
     return {
-      products: []
+      suggestions: [],
+      current_product: ""
     }
-  },
-  mounted(){
-    this.loadProducts();
   },
   components:{
     Product
@@ -43,19 +42,26 @@ export default {
     back(){
       this.$router.replace("list");
     },
-    loadProducts(){
+    queryProducts(value){
       var global_this = this;
       var db = firebase.firestore();
-      db.collection("users").doc(firebase.auth().currentUser.uid).collection("lists").doc(Store.currentList.id).collection("items").orderBy("purchased").orderBy("modifiedDate", "desc")
+      db.collection("users").doc(firebase.auth().currentUser.uid).collection("lists").doc(Store.currentList.id).collection("items").orderBy("name")
       .onSnapshot(function(products) {
-        global_this.products = [];
+        global_this.suggestions = [];
         products.forEach(function(product){
-          global_this.products.push(Object.assign({id: product.id}, product.data()));
+          if(product.data().name.toLowerCase().indexOf(value.toLowerCase()) !== -1){ //Search
+            global_this.suggestions.push(Object.assign({id: product.id}, product.data()));
+          }
         });
       });
     },
     openEditDialog(){
 
+    }
+  },
+  watch: {
+    current_product(val){
+      this.queryProducts(val);
     }
   }
 }

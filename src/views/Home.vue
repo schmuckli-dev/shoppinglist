@@ -44,7 +44,10 @@ export default {
                 not_purchased_items_counter++;
               }
             });
-            global_this.$set(global_this.lists_meta, current_list_id, not_purchased_items_counter); //Equal to global_this.lists_meta[key] = value
+
+            //Equal to global_this.lists_meta[key] = value
+            //https://forum.vuejs.org/t/solved-how-to-rerender-from-add-remove-of-an-array-element-when-array-is-property-of-exported-object-a-set-issue/18723
+            global_this.$set(global_this.lists_meta, current_list_id, not_purchased_items_counter);
           });
           global_this.lists.push(Object.assign({id: list.id}, list.data()));
         });
