@@ -9,7 +9,7 @@
       </v-flex>
     </v-layout>
     <div id="select_product" v-if="step == 1">
-      <v-text-field outline :label="$t('new.product')" v-model="current_product" />
+      <v-text-field ref="focussed_field" outline :label="$t('new.product')" v-model="current_product" />
       <v-layout row wrap>
         <v-flex xs6 sm4 md3 lg2 v-for="product in suggestions" :key="product.id">
           <Product :name="product.name" :product_id="product.id" :suggestion="Boolean(true)" />
@@ -90,6 +90,7 @@ export default {
       this.$router.replace("home");
     } else {
       this.queryProducts("");
+      this.$refs.focussed_field.focus();
     }
   },
   methods: {

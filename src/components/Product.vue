@@ -5,14 +5,14 @@
         <span v-html="bigTitle"></span>
       </div>
       <v-layout>
-        <v-flex xs3 v-if="amount != undefined">
-          {{ amount }}
+        <v-flex xs3 v-if="amount != undefined && amount != ''">
+          <span class="subtitle">{{ amount }}</span>
         </v-flex>
-        <v-flex xs9 v-if="amount != undefined">
-          {{ name }}
+        <v-flex xs9 v-if="amount != undefined && amount != ''">
+          <span class="subtitle">{{ name }}</span>
         </v-flex>
-        <v-flex xs12 v-if="amount == undefined" style="text-align:center;">
-          {{ name }}
+        <v-flex xs12 v-if="amount == undefined || amount == ''" style="text-align:center;">
+          <span class="subtitle">{{ name }}</span>
         </v-flex>
       </v-layout>
     </v-card-title>
@@ -98,5 +98,9 @@ export default {
   width:100%;
   text-align: center;
   margin-bottom:20px;
+  font-weight: bold;
+}
+.subtitle{
+  font-size: 15px;
 }
 </style>

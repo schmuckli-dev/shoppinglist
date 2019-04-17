@@ -86,6 +86,6 @@ h3{
   margin-bottom: 10px;
 }
 .faded{
-  opacity: 0.5;
+  opacity: 0.3;
 }
 </style>
