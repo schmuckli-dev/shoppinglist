@@ -2,7 +2,10 @@ import Vue from 'vue';
 
 export const Store = Vue.observable({
   notification: "",
-  currentList: {}
+  currentList: {},
+
+  //New product page
+  new_CurrentSelectedProduct: undefined
 });
 
 export const StoreMod = {
@@ -11,5 +14,9 @@ export const StoreMod = {
   },
   setCurrentList(list_data){
     Store.currentList = list_data;
+  },
+
+  new_setCurrentSelectedProduct(product){
+    Store.new_CurrentSelectedProduct = product;
   }
 };

@@ -11,7 +11,10 @@
     <v-text-field :label="$t('new.product')" v-model="current_product" />
     <v-layout row wrap>
       <v-flex xs6 sm4 md3 lg2 v-for="product in suggestions" :key="product.id">
-        <Product :amount="product.amount" :name="product.name" :product_id="product.id" :suggestion="Boolean(true)" :list_id="currentListId" />
+        <Product :name="product.name" :product_id="product.id" :suggestion="Boolean(true)" />
+      </v-flex>
+      <v-flex xs6 sm4 md3 lg2>
+        <Product :name="current_product" :suggestion="Boolean(true)" v-show="current_product != ''" />
       </v-flex>
     </v-layout>
   </v-container>
@@ -19,7 +22,7 @@
 
 <script>
 import firebase from "firebase";
-import { Store } from "./../store";
+import { Store, StoreMod } from "./../store";
 import Product from "./../components/Product";
 
 export default {
@@ -48,6 +51,9 @@ export default {
       db.collection("users").doc(firebase.auth().currentUser.uid).collection("lists").doc(Store.currentList.id).collection("items").orderBy("name")
       .onSnapshot(function(products) {
         global_this.suggestions = [];
+        if(products.length >= 1){
+          StoreMod.new_setCurrentSelectedProduct("");
+        }
         products.forEach(function(product){
           if(product.data().name.toLowerCase().indexOf(value.toLowerCase()) !== -1){ //Search
             global_this.suggestions.push(Object.assign({id: product.id}, product.data()));
