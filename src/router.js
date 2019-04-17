@@ -6,7 +6,9 @@ import Home from '@/views/Home';
 import Login from '@/views/Login';
 import Register from '@/views/Register';
 import Settings from '@/views/Settings';
+
 import NewProduct from '@/views/NewProduct';
+import NewList from '@/views/NewList';
 
 import ListView from '@/views/ListView';
 
@@ -52,6 +54,14 @@ const router = new Router({
       path: '/new_product',
       name: 'new_product',
       component: NewProduct,
+      meta: {
+        requiresAuth: true
+      }
+    },
+    {
+      path: '/new_list',
+      name: 'new_list',
+      component: NewList,
       meta: {
         requiresAuth: true
       }

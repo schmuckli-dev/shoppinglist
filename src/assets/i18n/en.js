@@ -33,6 +33,7 @@ export default {
   },
   new: {
     product: "New product",
+    list: "New list",
     selectedProduct: "Selected product",
     amount: "Amount",
     typeAmount: "Type amount",
@@ -61,6 +62,7 @@ export default {
     theLanguageHasBeenUpdated: "The language has been updated.",
     thereWasAnErrorWhileSaving: "There was an error while saving",
     theProductHasBeenAdded: "The product has been added",
-    pleaseSelectAProduct: "Please select a product."
+    pleaseSelectAProduct: "Please select a product.",
+    listHasBeenCreated: "The list has been created."
   }
 }

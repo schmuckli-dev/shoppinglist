@@ -55,7 +55,7 @@ import { Store, StoreMod } from "./../store";
 import Product from "./../components/Product";
 
 export default {
-  name: "List",
+  name: "NewProduct",
   data(){
     return {
       suggestions: [],

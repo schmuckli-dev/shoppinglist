@@ -5,6 +5,9 @@
         <List :list="list" :amount_items="lists_meta[list.id]" />
       </v-flex>
     </v-layout>
+    <v-btn fab dark color="#24919B" fixed right bottom>
+        <v-icon @click="openNewList" dark>add</v-icon>
+    </v-btn>
   </v-container>
 </template>
 
@@ -28,6 +31,9 @@ export default {
     this.loadLists();
   },
   methods: {
+    openNewList(){
+      this.$router.replace("new_list");
+    },
     loadLists(){
       var global_this = this;
       var db = firebase.firestore();

@@ -28,7 +28,7 @@ import { Store } from "./../store";
 import Product from "./../components/Product";
 
 export default {
-  name: "List",
+  name: "ListView",
   data(){
     return {
       products: [],
