@@ -5,6 +5,9 @@ export default {
     cancel: "Cancel",
     title: "Title",
     close: "Close",
+    forward: "Next",
+    change: "Change",
+    optional: "Optional",
     thisIsAProjectBy: "This is a project by",
     viewOnGithub: "View on Github"
   },
@@ -28,7 +31,11 @@ export default {
     editDescriptionDateTime: "You can change here the date and time of the passport, if it has not proposed correctly."
   },
   new: {
-    product: "New product"
+    product: "New product",
+    selectedProduct: "Selected product",
+    amount: "Amount",
+    typeAmount: "Type amount",
+    add: "Add"
   },
   login: {
     login: "Login",
@@ -50,6 +57,9 @@ export default {
     thereWasAnErrorWhileSavingTheProfile: "There was an error while saving the profile.",
     thePasswordHasBeenSet: "The password has been set.",
     thePasswordsDoesNotMatch: "The passwords does not match.",
-    theLanguageHasBeenUpdated: "The language has been updated."
+    theLanguageHasBeenUpdated: "The language has been updated.",
+    thereWasAnErrorWhileSaving: "There was an error while saving",
+    theProductHasBeenAdded: "The product has been added",
+    pleaseSelectAProduct: "Please select a product."
   }
 }
