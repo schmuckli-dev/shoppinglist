@@ -27,6 +27,9 @@ export default {
     delete: "Delete",
     editDescriptionDateTime: "You can change here the date and time of the passport, if it has not proposed correctly."
   },
+  new: {
+    product: "New product"
+  },
   login: {
     login: "Login",
     register: "Register",

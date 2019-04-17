@@ -13,7 +13,7 @@
       <v-flex xs6 sm4 md3 lg2 v-for="product in suggestions" :key="product.id">
         <Product :name="product.name" :product_id="product.id" :suggestion="Boolean(true)" />
       </v-flex>
-      <v-flex xs6 sm4 md3 lg2>
+      <v-flex xs6 sm4 md3 lg2 v-show="!doesMatchWithSuggestions">
         <Product :name="current_product" :suggestion="Boolean(true)" v-show="current_product != ''" />
       </v-flex>
     </v-layout>
@@ -39,7 +39,20 @@ export default {
   computed: {
     currentListId(){
       return Store.currentList.id;
+    },
+    doesMatchWithSuggestions(){
+      var global_this = this;
+      var found = false;
+      this.suggestions.forEach(function(current){
+        if(current.name.toLowerCase() === global_this.current_product.toLowerCase()){
+          found = true;
+        }
+      });
+      return found;
     }
+  },
+  mounted(){
+    this.queryProducts("");
   },
   methods: {
     back(){
@@ -56,7 +69,9 @@ export default {
         }
         products.forEach(function(product){
           if(product.data().name.toLowerCase().indexOf(value.toLowerCase()) !== -1){ //Search
-            global_this.suggestions.push(Object.assign({id: product.id}, product.data()));
+            if(global_this.suggestions.length < 5) {
+              global_this.suggestions.push(Object.assign({id: product.id}, product.data()));
+            }
           }
         });
       });
