@@ -32,7 +32,11 @@ export default {
     }
   },
   mounted(){
-    this.loadProducts();
+    if(Store.currentList.id == undefined){
+      this.$router.replace("home");
+    } else {
+      this.loadProducts();
+    }
   },
   components:{
     Product

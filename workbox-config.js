@@ -4,8 +4,5 @@ module.exports = {
   swDest: "./dist/service-worker.js",
   maximumFileSizeToCacheInBytes: 10000000,
   skipWaiting: true,
-  clientsClaim: true,
-  templatedUrls: {
-    "/hoodie/client.js": ".hoodie/client.js"
-  }
+  clientsClaim: true
 };

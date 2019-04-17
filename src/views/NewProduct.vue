@@ -52,7 +52,11 @@ export default {
     }
   },
   mounted(){
-    this.queryProducts("");
+    if(Store.currentList.id == undefined){
+      this.$router.replace("home");
+    } else {
+      this.queryProducts("");
+    }
   },
   methods: {
     back(){
