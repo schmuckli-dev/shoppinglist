@@ -12,6 +12,9 @@
       <v-flex xs6 sm4 md3 lg2 v-for="product in products" :key="product.id">
         <Product :amount="product.amount" :name="product.name" :product_id="product.id" :purchased="product.purchased" :list_id="currentListId" />
       </v-flex>
+      <v-flex xs6 sm4 md3 lg2 v-for="product in purchased_products" :key="product.id" class="faded">
+        <Product :amount="product.amount" :name="product.name" :product_id="product.id" :purchased="product.purchased" :list_id="currentListId" />
+      </v-flex>
     </v-layout>
     <v-btn fab dark color="#24919B" fixed right bottom>
         <v-icon @click="openNewProduct" dark>add</v-icon>
@@ -28,7 +31,8 @@ export default {
   name: "List",
   data(){
     return {
-      products: []
+      products: [],
+      purchased_products: []
     }
   },
   mounted(){
@@ -53,11 +57,18 @@ export default {
     loadProducts(){
       var global_this = this;
       var db = firebase.firestore();
-      db.collection("users").doc(firebase.auth().currentUser.uid).collection("lists").doc(Store.currentList.id).collection("items").orderBy("purchased").orderBy("modifiedDate", "desc")
+      db.collection("users").doc(firebase.auth().currentUser.uid).collection("lists").doc(Store.currentList.id).collection("items").orderBy("modifiedDate", "desc").where("purchased", "==", false)
       .onSnapshot(function(products) {
         global_this.products = [];
         products.forEach(function(product){
           global_this.products.push(Object.assign({id: product.id}, product.data()));
+        });
+      });
+      db.collection("users").doc(firebase.auth().currentUser.uid).collection("lists").doc(Store.currentList.id).collection("items").orderBy("modifiedDate", "desc").where("purchased", "==", true).limit(4)
+      .onSnapshot(function(products) {
+        global_this.purchased_products = [];
+        products.forEach(function(product){
+          global_this.purchased_products.push(Object.assign({id: product.id}, product.data()));
         });
       });
     },
@@ -70,8 +81,11 @@ export default {
   }
 }
 </script>
-<style>
+<style scoped>
 h3{
   margin-bottom: 10px;
+}
+.faded{
+  opacity: 0.5;
 }
 </style>

@@ -1,5 +1,5 @@
 <template>
-  <v-card :color="backgroundColor" @click="setClicked" class="product">
+  <v-card :color="backgroundColor" :style="style" @click="setClicked" class="product">
     <v-card-title>
       <div class="big">
         <span v-html="bigTitle"></span>
@@ -49,6 +49,13 @@ export default {
         return this.purchased ? "#DFDFDF" : "#42A7B0";
       } else {
         return !this.selected ? "#DFDFDF" : "#42A7B0";
+      }
+    },
+    style(){
+      if(!this.suggestion){
+        return this.purchased ? "color:black;" : "color:white;";
+      } else {
+        return !this.selected ? "color:black;" : "color:white;";
       }
     },
     newCurrentSelectedProduct(){

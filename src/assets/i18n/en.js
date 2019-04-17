@@ -6,6 +6,7 @@ export default {
     title: "Title",
     close: "Close",
     forward: "Next",
+    new: "New",
     change: "Change",
     optional: "Optional",
     thisIsAProjectBy: "This is a project by",

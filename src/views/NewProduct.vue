@@ -40,7 +40,8 @@
         <v-card class="form_card">
           <span class="selected_title"><b>{{ $t("new.typeAmount") }} ({{ $t("general.optional") }})</b></span><br>
           <v-text-field outline v-model="current_amount" :label="$t('new.amount')" />
-          <v-btn @click="add" color="primary">{{ $t("new.add") }}</v-btn>
+          <v-btn @click="addClose" color="primary">{{ $t("new.add") }} &amp; {{ $t("general.close") }}</v-btn>
+          <v-btn @click="addNew" color="primary">{{ $t("new.add") }} &amp; {{ $t("general.new") }}</v-btn>
         </v-card>
       </v-fade-transition>
     </div>
@@ -102,7 +103,7 @@ export default {
         StoreMod.showNotification(this.$t("notification.pleaseSelectAProduct"));
       }
     },
-    add(){
+    addClose(){
       var global_this = this;
       if(this.currentListId != undefined && this.currentSelectedProduct != undefined){
         firebase.firestore().collection("users").doc(firebase.auth().currentUser.uid).collection("lists").doc(Store.currentList.id).collection("items").add({
@@ -114,6 +115,26 @@ export default {
         .then(function(){
           StoreMod.showNotification(global_this.$t("notification.theProductHasBeenAdded"));
           global_this.$router.replace("list");
+        }).catch(function(){
+          StoreMod.showNotification(global_this.$t("notification.thereWasAnErrorWhileSaving"));
+        });
+      }
+    },
+    addNew(){
+      var global_this = this;
+      if(this.currentListId != undefined && this.currentSelectedProduct != undefined){
+        firebase.firestore().collection("users").doc(firebase.auth().currentUser.uid).collection("lists").doc(Store.currentList.id).collection("items").add({
+          amount: this.current_amount,
+          modifiedDate: (new Date()).getTime(),
+          name: this.currentSelectedProduct,
+          purchased: false
+        })
+        .then(function(){
+          StoreMod.showNotification(global_this.$t("notification.theProductHasBeenAdded"));
+          StoreMod.new_setCurrentSelectedProduct(undefined);
+          global_this.current_product = "";
+          global_this.current_amount = "";
+          global_this.step = 1;
         }).catch(function(){
           StoreMod.showNotification(global_this.$t("notification.thereWasAnErrorWhileSaving"));
         });
