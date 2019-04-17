@@ -76,9 +76,6 @@ export default {
         });
       });
     },
-    openEditDialog(){
-
-    }
   },
   watch: {
     current_product(val){
