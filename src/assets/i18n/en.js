@@ -15,7 +15,8 @@ export default {
     viewOnGithub: "View on Github"
   },
   app: {
-    logout: "Logout"
+    logout: "Logout",
+    noListsYet: "There are no lists created yet."
   },
   settings: {
     settings: "Settings",
@@ -32,7 +33,8 @@ export default {
     notpurchasedyet: "Not purchased yet",
     deleteList: "Delete list",
     editDescriptionDateTime: "You can change here the date and time of the passport, if it has not proposed correctly.",
-    doYouReallyWantToDeleteThisList: "Do you really want to delete this list?"
+    doYouReallyWantToDeleteThisList: "Do you really want to delete this list?",
+    noProductsYet: "There are no products yet."
   },
   new: {
     product: "New product",

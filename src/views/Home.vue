@@ -1,10 +1,14 @@
 <template>
   <v-container>
-    <v-layout row wrap>
+    <v-layout row wrap v-if="!isEmpty">
       <v-flex lg3 md4 sm6 xs12 v-for="(list) in lists" :key="list.id">
         <List :list="list" :amount_items="lists_meta[list.id]" />
       </v-flex>
     </v-layout>
+    <div v-if="isEmpty" style="text-align:center;margin-top:20px;">
+      <v-icon style="font-size:100px;margin-bottom:10px;color:black;">mood_bad</v-icon><br>
+      {{ $t("app.noListsYet") }}
+    </div>
     <v-btn fab dark color="#24919B" fixed right bottom>
         <v-icon @click="openNewList" dark>add</v-icon>
     </v-btn>
@@ -22,6 +26,11 @@ export default {
     return {
       lists: [],
       lists_meta: [],
+    }
+  },
+  computed: {
+    isEmpty(){
+      return this.lists.length == 0;
     }
   },
   components: {

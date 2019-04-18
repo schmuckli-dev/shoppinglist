@@ -8,7 +8,7 @@
         <v-btn @click="openEditDialog" flat><v-icon style="margin-right:10px;">edit</v-icon> {{ $t("list.edit") }}</v-btn>
       </v-flex>
     </v-layout>
-    <v-layout row wrap>
+    <v-layout row wrap v-if="!isEmpty">
       <v-flex xs6 sm4 md3 lg2 v-for="product in products" :key="product.id">
         <Product :amount="product.amount" :name="product.name" :product_id="product.id" :purchased="product.purchased" :list_id="currentListId" />
       </v-flex>
@@ -16,6 +16,10 @@
         <Product :amount="product.amount" :name="product.name" :product_id="product.id" :purchased="product.purchased" :list_id="currentListId" />
       </v-flex>
     </v-layout>
+    <div v-if="isEmpty" style="text-align:center;margin-top:20px;">
+      <v-icon style="font-size:100px;margin-bottom:10px;color:black;">mood_bad</v-icon><br>
+      {{ $t("list.noProductsYet") }}
+    </div>
     <v-btn fab dark color="#24919B" fixed right bottom>
         <v-icon @click="openNewProduct" dark>add</v-icon>
     </v-btn>
@@ -92,6 +96,9 @@ export default {
   computed: {
     currentListId(){
       return Store.currentList.id;
+    },
+    isEmpty(){
+      return this.products.length == 0 && this.purchased_products.length == 0
     }
   },
   methods: {
