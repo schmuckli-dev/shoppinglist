@@ -8,6 +8,8 @@ export default {
     forward: "Next",
     new: "New",
     change: "Change",
+    name: "Name",
+    delete: "Delete",
     optional: "Optional",
     thisIsAProjectBy: "This is a project by",
     viewOnGithub: "View on Github"
@@ -28,8 +30,9 @@ export default {
   list: {
     edit: "Edit",
     notpurchasedyet: "Not purchased yet",
-    delete: "Delete",
-    editDescriptionDateTime: "You can change here the date and time of the passport, if it has not proposed correctly."
+    deleteList: "Delete list",
+    editDescriptionDateTime: "You can change here the date and time of the passport, if it has not proposed correctly.",
+    doYouReallyWantToDeleteThisList: "Do you really want to delete this list?"
   },
   new: {
     product: "New product",
@@ -61,8 +64,11 @@ export default {
     thePasswordsDoesNotMatch: "The passwords does not match.",
     theLanguageHasBeenUpdated: "The language has been updated.",
     thereWasAnErrorWhileSaving: "There was an error while saving",
+    thereWasAnErrorWhileDeleting: "There was an error while deleting",
     theProductHasBeenAdded: "The product has been added",
     pleaseSelectAProduct: "Please select a product.",
-    listHasBeenCreated: "The list has been created."
+    listHasBeenCreated: "The list has been created.",
+    saved: "Saved!",
+    deleted: "Deleted!"
   }
 }
