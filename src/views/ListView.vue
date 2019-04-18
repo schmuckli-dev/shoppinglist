@@ -59,8 +59,8 @@
         <v-divider></v-divider>
         <v-card-actions>
           <v-spacer></v-spacer>
-          <v-btn flat @click="dialogDelete = false">Cancel</v-btn>
-          <v-btn flat color="red" @click="deleteConfirm">Delete</v-btn>
+          <v-btn flat @click="dialogDelete = false">{{ $t("general.cancel") }}</v-btn>
+          <v-btn flat color="red" @click="deleteConfirm">{{ $t("general.delete") }}</v-btn>
         </v-card-actions>
       </v-card>
     </v-dialog>

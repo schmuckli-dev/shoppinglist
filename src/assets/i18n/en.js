@@ -7,6 +7,7 @@ export default {
     close: "Close",
     forward: "Next",
     new: "New",
+    retry: "Retry",
     change: "Change",
     name: "Name",
     delete: "Delete",
@@ -42,7 +43,9 @@ export default {
     selectedProduct: "Selected product",
     amount: "Amount",
     typeAmount: "Type amount",
-    add: "Add"
+    add: "Add",
+    scan: "Scan",
+    productFound: "Product found"
   },
   login: {
     login: "Login",

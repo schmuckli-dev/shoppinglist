@@ -9,7 +9,7 @@
       </v-flex>
     </v-layout>
     <div id="select_product" v-if="step == 1">
-      <v-text-field ref="focussed_field" outline :label="$t('new.product')" v-model="current_product" />
+      <v-text-field ref="focussed_field" outline :label="$t('new.product')" v-model="current_product" @click:append="openScanner" append-icon="fal fa-barcode-read"/>
       <v-layout row wrap>
         <v-flex xs6 sm4 md3 lg2 v-for="product in suggestions" :key="product.id">
           <Product :name="product.name" :product_id="product.id" :suggestion="Boolean(true)" />
@@ -45,7 +45,28 @@
         </v-card>
       </v-fade-transition>
     </div>
-
+    <!-- Scan dialog -->
+    <v-dialog v-model="dialogScan" width="500">
+      <v-card>
+        <v-card-title class="headline lighten-2" primary-title>
+          {{ $t("new.scan") }}
+        </v-card-title>
+        <v-card-text style="padding-top:0;">
+          <div id="scan_area" v-if="current_barcode == undefined">
+          </div>
+          <div v-if="current_barcode != undefined">
+            <b>{{ $t("new.productFound") }}</b>
+            <p>{{ current_barcode }}</p>
+          </div>
+        </v-card-text>
+        <v-divider></v-divider>
+        <v-card-actions>
+          <v-spacer></v-spacer>
+          <v-btn flat @click="restartScanner" v-if="current_barcode != undefined">{{ $t("general.retry") }}</v-btn>
+          <v-btn flat @click="closeScanner">{{ $t("general.cancel") }}</v-btn>
+        </v-card-actions>
+      </v-card>
+    </v-dialog>
   </v-container>
 </template>
 
@@ -54,6 +75,8 @@ import firebase from "firebase";
 import { Store, StoreMod } from "./../store";
 import Product from "./../components/Product";
 
+import Quagga from "quagga";
+
 export default {
   name: "NewProduct",
   data(){
@@ -61,7 +84,10 @@ export default {
       suggestions: [],
       current_product: "",
       current_amount: "",
-      step: 1
+      step: 1,
+
+      dialogScan: false,
+      current_barcode: undefined
     }
   },
   components:{
@@ -168,6 +194,43 @@ export default {
         });
       });
     },
+    openScanner(){
+      this.dialogScan = true;
+      this.initScanner();
+    },
+    restartScanner(){
+      var global_this = this;
+
+      this.current_barcode = undefined;
+      this.dialogScan = false;
+      setTimeout(function(){
+        global_this.dialogScan = true;
+        global_this.initScanner();
+      }, 20);
+    },
+    initScanner(){
+      var global_this = this;
+      Quagga.init({
+        inputStream : {
+          name : "Live",
+          type : "LiveStream",
+          target: document.querySelector('#scan_area')
+        },
+        decoder : {
+          readers : ["ean_reader"]
+        }
+      }, function() {
+          Quagga.start();
+          Quagga.onDetected(function(data){
+            Quagga.stop();
+            global_this.current_barcode = data.codeResult.code;
+          });
+      });
+    },
+    closeScanner(){
+      this.dialogScan = false;
+      Quagga.stop();
+    }
   },
   watch: {
     current_product(val){
@@ -183,5 +246,10 @@ h3{
 .selected_title{
   font-size:17px;
   margin-left:10px;
+}
+#scan_area{
+  width: 100%;
+  overflow: hidden;
+  height: 350px;
 }
 </style>
