@@ -12,6 +12,8 @@ import NewList from '@/views/NewList';
 
 import ListView from '@/views/ListView';
 
+import Products from '@/views/Products';
+
 Vue.use(Router);
 
 const router = new Router({
@@ -62,6 +64,14 @@ const router = new Router({
       path: '/new_list',
       name: 'new_list',
       component: NewList,
+      meta: {
+        requiresAuth: true
+      }
+    },
+    {
+      path: '/products',
+      name: 'Products',
+      component: Products,
       meta: {
         requiresAuth: true
       }

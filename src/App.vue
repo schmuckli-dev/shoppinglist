@@ -38,6 +38,32 @@
           <a href="https://www.schmuckli.net/" target="_blank">Julian Schmuckli</a> |
           <a href="https://github.com/julianschmuckli/shoppinglist" target="_blank">{{ $t("general.viewOnGithub") }}</a></p>
       </footer>
+      <v-bottom-nav
+      :active.sync="bottomNav"
+      :value="true"
+      absolute
+      color="transparent"
+    >
+      <v-btn
+        color="primary"
+        flat
+        @click="switchToLists"
+        value="home"
+      >
+        <span>{{ $t("app.lists") }}</span>
+        <v-icon>list</v-icon>
+      </v-btn>
+
+      <v-btn
+        color="primary"
+        flat
+        @click="switchToProducts"
+        value="products"
+      >
+        <span>Products</span>
+        <v-icon>shop_two</v-icon>
+      </v-btn>
+    </v-bottom-nav>
     </v-content>
 
     <!-- Notification -->
@@ -64,7 +90,8 @@ export default {
   name: 'App',
   data() {
     return {
-      currentUser: firebase.auth().currentUser
+      currentUser: firebase.auth().currentUser,
+      bottomNav: this.$router.currentRoute.path.replace("/", "")
     }
   },
   computed: {
@@ -114,6 +141,12 @@ export default {
       } else {
         StoreMod.showNotification("notification.youCantLogoutWhileOffline");
       }
+    },
+    switchToLists(){
+      this.$router.replace("home");
+    },
+    switchToProducts(){
+      this.$router.replace("products");
     }
   },
   watch:{

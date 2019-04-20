@@ -261,7 +261,8 @@ export default {
     associateBarcode(){
       var global_this = this;
       firebase.firestore().collection("users").doc(firebase.auth().currentUser.uid).collection("barcodes").doc(this.current_barcode).set({
-        name: global_this.current_product
+        name: global_this.current_product,
+        name_ic: global_this.current_product.toLowerCase()
       });
     }
   },

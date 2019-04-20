@@ -1,5 +1,6 @@
 <template>
   <v-container>
+    <h1 class="form_card">{{ $t("app.lists") }}</h1>
     <v-layout row wrap v-if="!isEmpty">
       <v-flex lg3 md4 sm6 xs12 v-for="(list) in lists" :key="list.id">
         <List :list="list" :amount_items="lists_meta[list.id]" />
@@ -9,7 +10,7 @@
       <v-icon style="font-size:100px;margin-bottom:10px;color:black;">mood_bad</v-icon><br>
       {{ $t("app.noListsYet") }}
     </div>
-    <v-btn fab dark color="#24919B" fixed right bottom>
+    <v-btn fab dark color="#24919B" fixed right bottom style="margin-bottom:60px;">
         <v-icon @click="openNewList" dark>add</v-icon>
     </v-btn>
   </v-container>

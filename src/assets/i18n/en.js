@@ -17,7 +17,9 @@ export default {
   },
   app: {
     logout: "Logout",
-    noListsYet: "There are no lists created yet."
+    noListsYet: "There are no lists created yet.",
+    lists: "Lists",
+    products: "Products"
   },
   settings: {
     settings: "Settings",
