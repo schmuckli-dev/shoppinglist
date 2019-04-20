@@ -222,19 +222,35 @@ export default {
       }, function() {
           Quagga.start();
           Quagga.onDetected(function(data){
-            Quagga.stop();
+            global_this.closeScanner()
             global_this.current_barcode = data.codeResult.code;
+            global_this.matchProduct();
           });
       });
     },
     closeScanner(){
       this.dialogScan = false;
       Quagga.stop();
+    },
+    matchProduct(){
+      firebase.firestore().collection("users").doc(firebase.auth().currentUser.uid).collection("barcodes").doc(this.current_barcode)
+      .onSnapshot(function(result) {
+        if(result.exists){
+          alert(result.data().name);
+        } else {
+          alert("Not found");
+        }
+      });
     }
   },
   watch: {
     current_product(val){
       this.queryProducts(val);
+    },
+    dialogScan(new_val){
+      if(!new_val){
+        this.closeScanner();
+      }
     }
   }
 }
