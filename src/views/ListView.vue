@@ -17,9 +17,16 @@
         <Product :amount="product.amount" :name="product.name" :product_id="product.id" :purchased="product.purchased" :list_id="currentListId" />
       </v-flex>
     </v-layout>
-    <div v-if="isEmpty" style="text-align:center;margin-top:20px;">
+    <div v-if="isEmpty && !isLoading" style="text-align:center;margin-top:20px;">
       <v-icon style="font-size:100px;margin-bottom:10px;color:black;">mood_bad</v-icon><br>
       {{ $t("list.noProductsYet") }}
+    </div>
+    <div v-if="isLoading" style="text-align:center;margin-top:20px;">
+      <v-progress-circular
+        :size="50"
+        color="primary"
+        indeterminate
+      ></v-progress-circular>
     </div>
     <v-btn fab dark color="#24919B" fixed right bottom style="margin-bottom:60px;">
         <v-icon @click="openNewProduct" dark>add</v-icon>
@@ -81,7 +88,9 @@ export default {
       purchased_products: [],
       dialogEdit: false,
       dialogDelete: false,
-      dialogEditListName: Store.currentList.name
+      dialogEditListName: Store.currentList.name,
+
+      isLoading: true
     }
   },
   mounted(){
@@ -118,6 +127,7 @@ export default {
         products.forEach(function(product){
           global_this.products.push(Object.assign({id: product.id}, product.data()));
         });
+        global_this.isLoading = false;
       });
       db.collection("users").doc(firebase.auth().currentUser.uid).collection("lists").doc(Store.currentList.id).collection("items").orderBy("modifiedDate", "desc").where("purchased", "==", true).limit(4)
       .onSnapshot(function(products) {
@@ -125,6 +135,7 @@ export default {
         products.forEach(function(product){
           global_this.purchased_products.push(Object.assign({id: product.id}, product.data()));
         });
+        global_this.isLoading = false;
       });
     },
     openNewProduct(){
@@ -139,6 +150,7 @@ export default {
         name: global_this.dialogEditListName
       }).then(function(){
         global_this.dialogEdit = false;
+        StoreMod.setCurrentList(Object.assign({id: Store.currentList.id}, {name: global_this.dialogEditListName}))
         StoreMod.showNotification(global_this.$t("notification.saved"));
       }).catch(function(){
         StoreMod.showNotification(global_this.$t("notification.thereWasAnErrorWhileSaving"));

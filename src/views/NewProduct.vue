@@ -259,10 +259,12 @@ export default {
       });
     },
     associateBarcode(){
-      firebase.firestore().collection("users").doc(firebase.auth().currentUser.uid).collection("barcodes").doc(this.current_barcode).set({
-        name: Store.new_CurrentSelectedProduct,
-        name_ic: Store.new_CurrentSelectedProduct.toLowerCase()
-      });
+      if(this.current_barcode){
+        firebase.firestore().collection("users").doc(firebase.auth().currentUser.uid).collection("barcodes").doc(this.current_barcode).set({
+          name: Store.new_CurrentSelectedProduct,
+          name_ic: Store.new_CurrentSelectedProduct.toLowerCase()
+        });
+      }
     }
   },
   watch: {

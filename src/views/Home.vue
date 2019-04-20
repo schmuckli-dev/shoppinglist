@@ -6,9 +6,16 @@
         <List :list="list" :amount_items="lists_meta[list.id]" />
       </v-flex>
     </v-layout>
-    <div v-if="isEmpty" style="text-align:center;margin-top:20px;">
+    <div v-if="isEmpty && !isLoading" style="text-align:center;margin-top:20px;">
       <v-icon style="font-size:100px;margin-bottom:10px;color:black;">mood_bad</v-icon><br>
       {{ $t("app.noListsYet") }}
+    </div>
+    <div v-if="isLoading" style="text-align:center;margin-top:20px;">
+      <v-progress-circular
+        :size="50"
+        color="primary"
+        indeterminate
+      ></v-progress-circular>
     </div>
     <v-btn fab dark color="#24919B" fixed right bottom style="margin-bottom:60px;">
         <v-icon @click="openNewList" dark>add</v-icon>
@@ -27,6 +34,8 @@ export default {
     return {
       lists: [],
       lists_meta: [],
+
+      isLoading: true
     }
   },
   computed: {
@@ -67,6 +76,7 @@ export default {
           });
           global_this.lists.push(Object.assign({id: list.id}, list.data()));
         });
+        global_this.isLoading = false;
       });
     }
   }
