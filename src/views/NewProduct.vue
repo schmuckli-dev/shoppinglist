@@ -9,7 +9,8 @@
       </v-flex>
     </v-layout>
     <div id="select_product" v-if="step == 1">
-      <v-text-field ref="focussed_field" outline :label="$t('new.product')" v-model="current_product" @click:append="openScanner" append-icon="fal fa-barcode-read"/>
+      <v-text-field ref="focussed_field" outline :label="$t('new.product')" v-model="current_product" @click:append="openScanner" append-icon="fal fa-barcode-read"
+      :hint="current_hint" persistent-hint/>
       <v-layout row wrap>
         <v-flex xs6 sm4 md3 lg2 v-for="product in suggestions" :key="product.id">
           <Product :name="product.name" :product_id="product.id" :suggestion="Boolean(true)" />
@@ -51,18 +52,20 @@
         <v-card-title class="headline lighten-2" primary-title>
           {{ $t("new.scan") }}
         </v-card-title>
-        <v-card-text style="padding-top:0;">
-          <div id="scan_area" v-if="current_barcode == undefined">
-          </div>
-          <div v-if="current_barcode != undefined">
-            <b>{{ $t("new.productFound") }}</b>
-            <p>{{ current_barcode }}</p>
+        <v-card-text style="padding-top:0;text-align:center;">
+          <v-progress-circular
+            :size="50"
+            color="primary"
+            style="margin-top:30px;"
+            indeterminate
+            v-if="loadingScanner"
+          ></v-progress-circular>
+          <div id="scan_area">
           </div>
         </v-card-text>
         <v-divider></v-divider>
         <v-card-actions>
           <v-spacer></v-spacer>
-          <v-btn flat @click="restartScanner" v-if="current_barcode != undefined">{{ $t("general.retry") }}</v-btn>
           <v-btn flat @click="closeScanner">{{ $t("general.cancel") }}</v-btn>
         </v-card-actions>
       </v-card>
@@ -87,7 +90,9 @@ export default {
       step: 1,
 
       dialogScan: false,
-      current_barcode: undefined
+      loadingScanner: false,
+      current_barcode: undefined,
+      current_hint: ""
     }
   },
   components:{
@@ -141,6 +146,7 @@ export default {
         })
         .then(function(){
           StoreMod.showNotification(global_this.$t("notification.theProductHasBeenAdded"));
+          global_this.associateBarcode();
           global_this.$router.replace("list");
         }).catch(function(){
           StoreMod.showNotification(global_this.$t("notification.thereWasAnErrorWhileSaving"));
@@ -158,9 +164,13 @@ export default {
         })
         .then(function(){
           StoreMod.showNotification(global_this.$t("notification.theProductHasBeenAdded"));
+          global_this.associateBarcode();
+
           StoreMod.new_setCurrentSelectedProduct(undefined);
           global_this.current_product = "";
           global_this.current_amount = "";
+          global_this.current_barcode = undefined;
+          global_this.current_hint = "";
           global_this.step = 1;
         }).catch(function(){
           StoreMod.showNotification(global_this.$t("notification.thereWasAnErrorWhileSaving"));
@@ -210,6 +220,7 @@ export default {
     },
     initScanner(){
       var global_this = this;
+      this.loadingScanner = true;
       Quagga.init({
         inputStream : {
           name : "Live",
@@ -220,6 +231,7 @@ export default {
           readers : ["ean_reader"]
         }
       }, function() {
+          global_this.loadingScanner = false;
           Quagga.start();
           Quagga.onDetected(function(data){
             global_this.closeScanner()
@@ -233,13 +245,23 @@ export default {
       Quagga.stop();
     },
     matchProduct(){
+      var global_this = this;
       firebase.firestore().collection("users").doc(firebase.auth().currentUser.uid).collection("barcodes").doc(this.current_barcode)
       .onSnapshot(function(result) {
         if(result.exists){
-          alert(result.data().name);
+          global_this.current_product = result.data().name;
+          StoreMod.new_setCurrentSelectedProduct(result.data().name);
+          global_this.step = 2;
+          global_this.current_hint = global_this.$t("new.productFoundFor") + " " + global_this.current_barcode;
         } else {
-          alert("Not found");
+          global_this.current_hint = global_this.$t("new.noProductFoundSavingThisWillAssociateWithThisBarcode") + " " + global_this.current_barcode;
         }
+      });
+    },
+    associateBarcode(){
+      var global_this = this;
+      firebase.firestore().collection("users").doc(firebase.auth().currentUser.uid).collection("barcodes").doc(this.current_barcode).set({
+        name: global_this.current_product
       });
     }
   },

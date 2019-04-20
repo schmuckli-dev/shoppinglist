@@ -45,7 +45,8 @@ export default {
     typeAmount: "Type amount",
     add: "Add",
     scan: "Scan",
-    productFound: "Product found"
+    productFoundFor: "Product found for",
+    noProductFoundSavingThisWillAssociateWithThisBarcode: "No product found. Saving this product will associate with this barcode."
   },
   login: {
     login: "Login",
