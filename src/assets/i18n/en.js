@@ -19,7 +19,10 @@ export default {
     logout: "Logout",
     noListsYet: "There are no lists created yet.",
     lists: "Lists",
-    products: "Products"
+    products: "Products",
+    productsDescription: "Here are all products listed, which have been associated with a barcode (EAN). You can edit or delete here these products. It will not affect the products in the list.",
+    deleteProduct: "Delete Product",
+    doYouReallyWantToDeleteThisProduct: "Do you really want to delete this product?"
   },
   settings: {
     settings: "Settings",

@@ -1,21 +1,12 @@
 <template>
   <v-container>
-    <h1 class="form_card">{{ $t("app.products") }}</h1>
+    <div class="form_card">
+      <h1>{{ $t("app.products") }} <v-icon style="margin-bottom:3px;" @click="openInfo = !openInfo">info</v-icon></h1>
+      <p v-if="openInfo">{{ $t("app.productsDescription") }}</p>
+    </div>
     <v-layout row wrap v-if="!isEmpty">
       <v-flex lg3 md4 sm6 xs12 v-for="(product) in products" :key="product.id">
-        <v-card class="form_card">
-          <v-card-text style="padding:3px;">
-            <v-layout row>
-              <v-flex xs6>
-                <b>{{ product.name }}</b><br>
-                <span style="color:grey;">{{ product.id }}</span>
-              </v-flex>
-              <v-flex xs6 style="text-align:right;color:black;">
-                <v-icon>edit</v-icon>
-              </v-flex>
-            </v-layout>
-          </v-card-text>
-        </v-card>
+        <BarcodeProduct :name="product.name" :barcode="product.id"/>
       </v-flex>
     </v-layout>
   </v-container>
@@ -23,18 +14,23 @@
 
 <script>
 import firebase from "firebase";
+import BarcodeProduct from "../components/BarcodeProduct";
 
 export default {
   name: "Products",
   data(){
     return {
-      products: [],
+      openInfo: false,
+      products: []
     }
   },
   computed: {
     isEmpty(){
       return this.products.length == 0;
     }
+  },
+  components: {
+    BarcodeProduct
   },
   mounted(){
     this.loadProducts();
