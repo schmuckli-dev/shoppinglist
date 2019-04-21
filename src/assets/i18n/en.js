@@ -7,6 +7,7 @@ export default {
     close: "Close",
     forward: "Next",
     new: "New",
+    add: "Add",
     retry: "Retry",
     change: "Change",
     name: "Name",
@@ -40,7 +41,9 @@ export default {
     deleteList: "Delete list",
     editDescriptionDateTime: "You can change here the date and time of the passport, if it has not proposed correctly.",
     doYouReallyWantToDeleteThisList: "Do you really want to delete this list?",
-    noProductsYet: "There are no products yet."
+    noProductsYet: "There are no products yet.",
+    share: "Share",
+    shareDescription: "Simply share this list with other members by entering the email below."
   },
   new: {
     product: "New product",

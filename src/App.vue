@@ -47,6 +47,7 @@
       :active.sync="bottomNav"
       :value="true"
       fixed
+      v-if="isLoggedIn"
       color="white"
     >
       <v-btn
