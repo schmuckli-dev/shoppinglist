@@ -7,7 +7,7 @@
           <p v-if="openInfo">{{ $t("app.productsDescription") }}</p>
         </v-flex>
         <v-flex xs4 style="text-align:right;">
-          <v-btn :href="csv_export" download="products.csv"><v-icon style="margin-right:10px;">fal fa-file-csv</v-icon> {{ $t("app.export") }}</v-btn>
+          <v-btn flat @click="dialogImportExport = true"><v-icon style="margin-right:10px;">import_export</v-icon>{{ $t("app.importexport") }}</v-btn>
         </v-flex>
       </v-layout>
     </div>
@@ -16,6 +16,33 @@
         <BarcodeProduct :name="product.name" :barcode="product.id"/>
       </v-flex>
     </v-layout>
+
+    <!-- Import / Export dialog -->
+    <v-dialog v-model="dialogImportExport" width="500">
+      <v-card>
+        <v-card-title class="headline">
+          {{ $t("app.importexport") }}
+        </v-card-title>
+        <v-card-text>
+          <h3 class="first_title">{{ $t("app.import") }}</h3>
+          <p>{{ $t("app.importDescription") }}</p>
+          <v-btn @click='openFileDialog'>
+            <v-icon style="margin-right:10px;">fal fa-file-csv</v-icon> {{ $t("app.import") }}
+          </v-btn>
+          <input id="upload_file" style="display:none;"
+            @change="upload($event)"
+            type="file">
+          <h3>{{ $t("app.export") }}</h3>
+          <p>{{ $t("app.exportDescription") }}</p>
+          <v-btn :href="csv_export" download="products.csv"><v-icon style="margin-right:10px;">fal fa-file-csv</v-icon> {{ $t("app.export") }}</v-btn>
+        </v-card-text>
+        <v-divider></v-divider>
+        <v-card-actions>
+          <v-spacer></v-spacer>
+          <v-btn flat @click="dialogImportExport = false">{{ $t("general.cancel") }}</v-btn>
+        </v-card-actions>
+      </v-card>
+    </v-dialog>
   </v-container>
 </template>
 
@@ -29,6 +56,8 @@ export default {
     return {
       openInfo: false,
       products: [],
+
+      dialogImportExport: false,
       csv_data: []
     }
   },
@@ -54,6 +83,20 @@ export default {
     this.loadProducts();
   },
   methods: {
+    openFileDialog(){
+      document.getElementById("upload_file").click();
+    },
+    upload(event){
+      var file = event.target.files[0];
+      var reader = new FileReader();
+
+      reader.onload = (function() {
+        return function(e) {
+          //console.log(e.target.result);
+        };
+      })(file);
+      reader.readAsText(file);
+    },
     loadProducts(){
       var global_this = this;
       var db = firebase.firestore();
@@ -71,3 +114,8 @@ export default {
   }
 }
 </script>
+<style scoped>
+.first_title{
+  margin-top: 0;
+}
+</style>

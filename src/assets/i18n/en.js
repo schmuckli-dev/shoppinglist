@@ -24,7 +24,12 @@ export default {
     productsDescription: "Here are all products listed, which have been associated with a barcode (EAN). You can edit or delete here these products. It will not affect the products in the list.",
     deleteProduct: "Delete Product",
     doYouReallyWantToDeleteThisProduct: "Do you really want to delete this product?",
-    export: "Export"
+
+    importexport: "Import / Export",
+    export: "Export",
+    import: "Import",
+    importDescription: "Just upload here a CSV file and it will import these products into your existing products. Use the pattern: 'barcode', 'product'",
+    exportDescription: "You can simply export here all your products in one CSV file."
   },
   settings: {
     settings: "Settings",
