@@ -93,7 +93,10 @@ export default {
     BarcodeProduct
   },
   mounted(){
-    this.loadProducts();
+    var global_this = this;
+    setTimeout(function(){
+      global_this.loadProducts();
+    }, 200);
   },
   methods: {
     openFileDialog(){
