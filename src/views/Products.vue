@@ -16,6 +16,17 @@
         <BarcodeProduct :name="product.name" :barcode="product.id"/>
       </v-flex>
     </v-layout>
+    <div v-if="isEmpty && !isLoading" style="text-align:center;margin-top:20px;">
+      <v-icon style="font-size:100px;margin-bottom:10px;color:black;">mood_bad</v-icon><br>
+      {{ $t("list.noProductsYet") }}
+    </div>
+    <div v-if="isLoading" style="text-align:center;margin-top:20px;">
+      <v-progress-circular
+        :size="50"
+        color="primary"
+        indeterminate
+      ></v-progress-circular>
+    </div>
 
     <!-- Import / Export dialog -->
     <v-dialog v-model="dialogImportExport" width="500">
@@ -48,6 +59,7 @@
 
 <script>
 import firebase from "firebase";
+import { StoreMod } from "../store";
 import BarcodeProduct from "../components/BarcodeProduct";
 
 export default {
@@ -56,6 +68,7 @@ export default {
     return {
       openInfo: false,
       products: [],
+      isLoading: true,
 
       dialogImportExport: false,
       csv_data: []
@@ -90,9 +103,31 @@ export default {
       var file = event.target.files[0];
       var reader = new FileReader();
 
+      var global_this = this;
+      var db = firebase.firestore();
+
       reader.onload = (function() {
         return function(e) {
-          //console.log(e.target.result);
+          var data = e.target.result;
+          var rows = data.split("\n");
+
+          var batch = db.batch();
+          rows.forEach(function(row){
+            var cols = row.split(",");
+            if(cols.length == 2){
+              var barcode = cols[0];
+              var name = cols[1];
+              var currentRef = db.collection("users").doc(firebase.auth().currentUser.uid).collection("barcodes").doc(barcode);
+              batch.set(currentRef, {
+                name: name,
+                name_ic: name.toLowerCase()
+              });
+            }
+          });
+          batch.commit().then(function(){
+            global_this.dialogImportExport = false;
+            StoreMod.showNotification(global_this.$t("notification.imported"));
+          });
         };
       })(file);
       reader.readAsText(file);
@@ -109,6 +144,7 @@ export default {
           global_this.products.push(Object.assign({id: barcode.id}, data));
           global_this.csv_data.push([barcode.id, data.name]);
         });
+        global_this.isLoading = false;
       });
     }
   }
