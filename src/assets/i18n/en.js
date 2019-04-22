@@ -91,6 +91,7 @@ export default {
     listHasBeenCreated: "The list has been created.",
     saved: "Saved!",
     deleted: "Deleted!",
-    imported: "Imported!"
+    imported: "Imported!",
+    thereWasAnErrorWhileImporting: "There was an error while importing the file. Please check your file."
   }
 }

@@ -115,8 +115,8 @@ export default {
           rows.forEach(function(row){
             var cols = row.split(",");
             if(cols.length == 2){
-              var barcode = cols[0];
-              var name = cols[1];
+              var barcode = cols[0].trim();
+              var name = cols[1].trim();
               var currentRef = db.collection("users").doc(firebase.auth().currentUser.uid).collection("barcodes").doc(barcode);
               batch.set(currentRef, {
                 name: name,
@@ -127,6 +127,8 @@ export default {
           batch.commit().then(function(){
             global_this.dialogImportExport = false;
             StoreMod.showNotification(global_this.$t("notification.imported"));
+          }).catch(function(){
+            StoreMod.showNotification(global_this.$t("notification.thereWasAnErrorWhileImporting"));
           });
         };
       })(file);
