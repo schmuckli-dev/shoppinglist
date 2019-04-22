@@ -95,6 +95,11 @@ export default{
         StoreMod.showNotification(global_this.$t("notification.thereWasAnErrorWhileDeleting"));
       });
     }
+  },
+  watch: {
+    name(val){
+      this.dialogEditProductName = val;
+    }
   }
 }
 </script>

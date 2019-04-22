@@ -2,12 +2,12 @@
   <v-container>
     <div class="form_card">
       <v-layout row>
-        <v-flex xs8>
+        <v-flex xs7>
           <h1>{{ $t("app.products") }} <v-icon style="margin-bottom:3px;" @click="openInfo = !openInfo">info</v-icon></h1>
           <p v-if="openInfo">{{ $t("app.productsDescription") }}</p>
         </v-flex>
-        <v-flex xs4 style="text-align:right;">
-          <v-btn flat @click="dialogImportExport = true"><v-icon style="margin-right:10px;">import_export</v-icon>{{ $t("app.importexport") }}</v-btn>
+        <v-flex xs5 style="text-align:right;">
+          <v-btn flat @click="dialogImportExport = true"><v-icon style="margin-right:10px;">import_export</v-icon>{{ $t("app.importexport_short") }}</v-btn>
         </v-flex>
       </v-layout>
     </div>

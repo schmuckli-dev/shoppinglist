@@ -26,6 +26,7 @@ export default {
     doYouReallyWantToDeleteThisProduct: "Do you really want to delete this product?",
 
     importexport: "Import / Export",
+    importexport_short: "Im- / Export",
     export: "Export",
     import: "Import",
     importDescription: "Just upload here a CSV file and it will import these products into your existing products, except the barcode already exists. In that case it will overwrite it. Use the pattern: 'barcode', 'product'",
