@@ -1,3 +1,96 @@
 export default {
-  
+  general: {
+    save: "Speichern",
+    back: "Zurück",
+    cancel: "Abbrechen",
+    title: "Titel",
+    close: "Schliessen",
+    forward: "Weiter",
+    new: "Neu",
+    add: "Hinzufügen",
+    retry: "Nochmal",
+    change: "Ändern",
+    name: "Name",
+    delete: "Löschen",
+    optional: "Optional",
+    thisIsAProjectBy: "Das ist ein Projekt von ",
+    viewOnGithub: "Projekt auf Github"
+  },
+  app: {
+    logout: "Abmelden",
+    noListsYet: "Es wurden noch keine Listen bisher erstellt.",
+    lists: "Listen",
+    products: "Produkte",
+    productsDescription: "Hier werden alle Produkte gelistet, welche mittels Barcode (EAN) hinzugefügt wurden. Die Produkte können hier geändert und gelöscht werden, werden aber nicht in den Listen beinflusst.",
+    deleteProduct: "Produkt löschen",
+    doYouReallyWantToDeleteThisProduct: "Möchtest du wirklich dieses Produkt löschen?",
+
+    importexport: "Import / Export",
+    importexport_short: "Im- / Export",
+    export: "Export",
+    import: "Import",
+    importDescription: "Hier kannst du ein CSV hochladen, welches danach die Produkte zu den bestehendne hinzufügt. Sollte ein Produkt bereits mit dem gleichen Barcode versehen sein, so wird dieses überschrieben. Die Spalten sollten diese Reihenfolge haben: 'Barcode', 'Produkt'",
+    exportDescription: "Hier kannst du alle Produkte in ein CSV exportieren."
+  },
+  settings: {
+    settings: "Einstellungen",
+    profile: "Profil",
+    displayName: 'Anzeigename',
+    email: "E-Mail",
+    password: "Passwort",
+    newPassword: "Neues Passwort",
+    newPasswordRepeat: "Neues Passwort wiederholen",
+    language: "Sprache"
+  },
+  list: {
+    edit: "Bearbeiten",
+    notpurchasedyet: "Noch nicht gekauft bisher",
+    deleteList: "Liste löschen",
+    doYouReallyWantToDeleteThisList: "Möchtest du diese Liste wirklich löschen?",
+    noProductsYet: "Es sind noch keine Produkte vorhanden.",
+    share: "Teilen",
+    shareDescription: "Teile deine Liste ganz einfach, in dem du unten eine E-Mail eintragst."
+  },
+  new: {
+    product: "Neues Produkt",
+    list: "Neue Liste",
+    selectedProduct: "Ausgewähltes Produkt",
+    amount: "Menge",
+    typeAmount: "Menge eingeben",
+    add: "Hinzufügen",
+    scan: "Scan",
+    productFoundFor: "Produkt gefunden für ",
+    noProductFoundSavingThisWillAssociateWithThisBarcode: "Es wurde kein Produkt gefunden. Die jetztige Eingabe assoziert dieses mit dem Barcode."
+  },
+  login: {
+    login: "Anmelden",
+    register: "Registrieren",
+    passwordRepeat: "Passwort wiederholen",
+    dontHaveAnAccount: "Noch kein Konto?",
+    alreadyHaveAnAccount: "Schon ein Konto?"
+  },
+  notification: {
+    loginSuccessful: "Anmelden erfolgreich.",
+    emailOrPasswordIsWrong: "Die E-Mail oder das Passwort ist falsch.",
+    youCantLoginWhileOffline: "Während du offline bist kannst du dich nicht anmelden.",
+    registrationSuccessful: "Registrierung erfolgreich. Du bist jetzt eingeloggt.",
+    cantRegisterWhileOffline: "Du kannst dich nicht registrieren während du offline bist.",
+    logoutWasSuccessful: "Abmeldung war erfolgreich.",
+    logoutWasNotSuccessful: "Abmeldung war nicht erfolgreich.",
+    youCantLogoutWhileOffline: "Du kannst dich nicht ausloggen, während du offline bist.",
+    theProfileHasBeenSaved: "Das Profil wurde gespeichert.",
+    thereWasAnErrorWhileSavingTheProfile: "Es ist ein Fehler während dem Speichern des Profiles aufgetreten.",
+    thePasswordHasBeenSet: "Das Passwort wurde gespeichert.",
+    thePasswordsDoesNotMatch: "Die Passwörter stimmen nicht überein.",
+    theLanguageHasBeenUpdated: "Die neue Sprache wurde gespeichert.",
+    thereWasAnErrorWhileSaving: "Es ist ein Fehler während dem Speichern aufgetreten.",
+    thereWasAnErrorWhileDeleting: "Es ist ein Fehler während dem Löschen aufgetreten.",
+    theProductHasBeenAdded: "Das Produkt wurde hinzugefügt.",
+    pleaseSelectAProduct: "Bitte wähle ein Produkt.",
+    listHasBeenCreated: "Die Liste wurde erstellt.",
+    saved: "Gespeichert!",
+    deleted: "Gelöscht!",
+    imported: "Importiert!",
+    thereWasAnErrorWhileImporting: "Es ist ein Fehler während dem Import aufgetreten."
+  }
 }
