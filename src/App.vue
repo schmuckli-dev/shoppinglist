@@ -66,7 +66,7 @@
         @click="switchToProducts"
         value="products"
       >
-        <span>Products</span>
+        <span>{{ $t("app.products") }}</span>
         <v-icon>shop_two</v-icon>
       </v-btn>
     </v-bottom-nav>
