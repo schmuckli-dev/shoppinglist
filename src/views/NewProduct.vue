@@ -60,7 +60,9 @@
             indeterminate
             v-if="loadingScanner"
           ></v-progress-circular>
-          <div id="scan_area">
+          <div id="outer_scan_area">
+            <div id="scan_area">
+            </div>
           </div>
         </v-card-text>
         <v-divider></v-divider>
@@ -294,7 +296,10 @@ h3{
 }
 #scan_area{
   width: 100%;
-  overflow: hidden;
+  overflow: visible;
   height: 350px;
+}
+video {
+  width: 100%;
 }
 </style>
