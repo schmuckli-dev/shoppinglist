@@ -225,7 +225,12 @@ export default {
         inputStream : {
           name : "Live",
           type : "LiveStream",
-          target: document.querySelector('#scan_area')
+          target: document.querySelector('#scan_area'),
+          constraints: {
+            width: 640,
+            height: 480,
+            facingMode: "environment"
+          },
         },
         decoder : {
           readers : ["ean_reader"]
