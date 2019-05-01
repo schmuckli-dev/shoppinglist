@@ -301,5 +301,6 @@ h3{
 }
 video {
   width: 100%;
+  height: 350px;
 }
 </style>

@@ -4,11 +4,11 @@
     <v-list three-line>
       <v-list-tile>
         <v-list-tile-avatar>
-          <v-icon color="blue" style="font-size:40px;">cloud</v-icon>
+          <v-icon color="blue" style="font-size:40px;margin-top:16px;">fal fa-barcode-read</v-icon>
         </v-list-tile-avatar>
         <v-list-tile-content>
-          <v-list-tile-title>Backup</v-list-tile-title>
-          <v-list-tile-sub-title>Just upload your passes like boarding pass or event ticket and keep them save in one place.</v-list-tile-sub-title>
+          <v-list-tile-title>Scan</v-list-tile-title>
+          <v-list-tile-sub-title>When you want to add a new product to your list, just use the scanner to add them by a barcode.</v-list-tile-sub-title>
         </v-list-tile-content>
       </v-list-tile>
       <v-list-tile>
@@ -22,11 +22,11 @@
       </v-list-tile>
       <v-list-tile>
         <v-list-tile-avatar>
-          <v-icon color="green" style="font-size:40px;">archive</v-icon>
+          <v-icon color="green" style="font-size:40px;">import_export</v-icon>
         </v-list-tile-avatar>
         <v-list-tile-content>
-          <v-list-tile-title>Archive</v-list-tile-title>
-          <v-list-tile-sub-title>You don't have to delete your passes. Keep the memories to your event in your archive.</v-list-tile-sub-title>
+          <v-list-tile-title>Export</v-list-tile-title>
+          <v-list-tile-sub-title>Just simply import and export your products in a CSV, so you can transfer them easily.</v-list-tile-sub-title>
         </v-list-tile-content>
       </v-list-tile>
     </v-list>

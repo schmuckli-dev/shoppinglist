@@ -44,13 +44,13 @@
               v-model="dialogEditListName"
               :label="$t('general.name')"
             ></v-text-field>
-          <h3>{{ $t("list.share") }}</h3>
+          <!--<h3>{{ $t("list.share") }}</h3>
           <p>{{ $t("list.shareDescription") }}</p>
           <v-text-field
               v-model="shareAddEmail"
               :label="$t('settings.email')"
             ></v-text-field>
-          <v-btn @click="addSharedEmail">{{ $t("general.add") }}</v-btn>
+          <v-btn @click="addSharedEmail">{{ $t("general.add") }}</v-btn>-->
           <h3>{{ $t("general.delete") }}</h3>
           <v-btn color="red" style="color:white;" @click="dialogDelete = true">{{ $t("general.delete") }}</v-btn>
         </v-card-text>
