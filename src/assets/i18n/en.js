@@ -14,7 +14,8 @@ export default {
     delete: "Delete",
     optional: "Optional",
     thisIsAProjectBy: "This is a project by",
-    viewOnGithub: "View on Github"
+    viewOnGithub: "View on Github",
+    moreAppsOn: "More apps on"
   },
   app: {
     logout: "Logout",

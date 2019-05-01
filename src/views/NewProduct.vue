@@ -296,7 +296,7 @@ h3{
 }
 #scan_area{
   width: 100%;
-  overflow: visible;
+  overflow: hidden;
   height: 350px;
 }
 video {
