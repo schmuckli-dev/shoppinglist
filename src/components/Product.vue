@@ -2,7 +2,8 @@
   <v-card :color="backgroundColor" :style="style" @click="setClicked" class="product">
     <v-card-title>
       <div class="big">
-        <span v-html="bigTitle"></span>
+        <span v-if="bigTitle.length === 1">{{ bigTitle }}</span>
+        <i :class="bigTitle"></i>
       </div>
       <v-layout>
         <v-flex xs3 v-if="amount != undefined && amount != ''">
@@ -21,6 +22,7 @@
 <script>
 import firebase from "firebase";
 import { Store, StoreMod } from "../store";
+import ProductDetector from "../controller/ProductDetector";
 
 export default {
   name: "Product",
@@ -42,7 +44,7 @@ export default {
   },
   computed: {
     bigTitle(){
-      return this.name.charAt(0).toUpperCase();
+      return ProductDetector.getProductIcon(this.name);
     },
     backgroundColor(){
       if(!this.suggestion){
@@ -94,13 +96,13 @@ export default {
   cursor: pointer;
 }
 .big{
-  font-size:30px;
+  font-size:40px;
   width:100%;
   text-align: center;
-  margin-bottom:20px;
+  margin-bottom:10px;
   font-weight: bold;
 }
 .subtitle{
-  font-size: 15px;
+  font-size: 17px;
 }
 </style>
