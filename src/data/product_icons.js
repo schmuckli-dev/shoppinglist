@@ -39,8 +39,7 @@ export default {
       icon: "popcorn",
       names: [
         "popcorn",
-        "popcorn",
-        "eier"
+        "popcorn"
       ]
     },
     {
@@ -69,9 +68,9 @@ export default {
       names: [
         "carrot",
         "carrots",
-        "Karotte",
-        "Karotten",
-        "Rüebli"
+        "karotte",
+        "karotten",
+        "rüebli"
       ]
     },
     {
@@ -86,8 +85,8 @@ export default {
       names: [
         "pumpkin",
         "pumpkins",
-        "Kürbis",
-        "Kürbisse"
+        "kürbis",
+        "kürbisse"
       ]
     },
     {
@@ -106,6 +105,65 @@ export default {
         "fleisch",
         "bbq",
         "filet"
+      ]
+    },
+    {
+      icon: "ice-cream",
+      names: [
+        "eis",
+        "eiscreme",
+        "eis creme",
+        "ice cream",
+        "ice",
+        "icecream"
+      ]
+    },
+    {
+      icon: "lemon",
+      names: [
+        "lemon",
+        "zitrone",
+        "zitron",
+        "citron",
+        "zitronenschnitz"
+      ]
+    },
+    {
+      icon: "hotdog",
+      names: [
+        "hotdog",
+        "hotdogs",
+        "hot dog"
+      ]
+    },
+    {
+      icon: "french-fries",
+      names: [
+        "french fries",
+        "pommes",
+        "pommes frites",
+        "frenchfries"
+      ]
+    },
+    {
+      icon: "sandwich",
+      names: [
+        "sandwich",
+        "sandwiches"
+      ]
+    },
+    {
+      icon: "hamburger",
+      names: [
+        "hamburger",
+        "ham burger"
+      ]
+    },
+    {
+      icon: "cheeseburger",
+      names: [
+        "cheeseburger",
+        "cheese burger"
       ]
     },
     {
