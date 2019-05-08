@@ -2,7 +2,6 @@ export default {
   products: [
     {
       icon: "apple-alt",
-      title: $t("product_icon.apple"),
       names: [
         "apfel",
         "apple",
@@ -12,7 +11,6 @@ export default {
     },
     {
       icon: "cheese-swiss",
-      title: $t("product_icon.cheese"),
       names: [
         "käse",
         "emmentaler",
@@ -23,7 +21,6 @@ export default {
     },
     {
       icon: "corn",
-      title: $t("product_icon.corn"),
       names: [
         "mais",
         "corn",
@@ -32,7 +29,6 @@ export default {
     },
     {
       icon: "cookie",
-      title: $t("product_icon.cookie"),
       names: [
         "cookie",
         "cookies",
@@ -41,7 +37,6 @@ export default {
     },
     {
       icon: "egg",
-      title: $t("product_icon.egg"),
       names: [
         "egg",
         "eggs",
@@ -51,7 +46,6 @@ export default {
     },
     {
       icon: "popcorn",
-      title: $t("product_icon.popcorn"),
       names: [
         "popcorn",
         "popcorn",
@@ -60,7 +54,6 @@ export default {
     },
     {
       icon: "bread-loaf",
-      title: $t("product_icon.bread"),
       names: [
         "bread",
         "breads",
