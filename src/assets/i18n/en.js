@@ -64,6 +64,14 @@ export default {
     productFoundFor: "Product found for",
     noProductFoundSavingThisWillAssociateWithThisBarcode: "No product found. Saving this product will associate with this barcode."
   },
+  product_icon: {
+    egg: "Egg",
+    corn: "Corn",
+    bread: "Bread",
+    popcorn: "Popcorn",
+    apple: "Apple",
+    cheese: "Cheese"
+  },
   login: {
     login: "Login",
     register: "Register",
