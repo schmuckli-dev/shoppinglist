@@ -7,10 +7,15 @@ export default class ProductDetector {
 
     data.products.forEach(function(product){
       if (!result_found) {
-        if (product.names.indexOf(product_name.toLowerCase()) !== -1) {
-          result = "fal fa-" + product.icon;
-          result_found = true;
-        }
+        product.names.forEach(function(name){
+          if(name.indexOf(product_name.toLowerCase()) > -1 || product_name.toLowerCase().indexOf(name) > -1) {
+            result = "fal fa-" + product.icon;
+            result_found = true;
+          }
+        })
+        /*if (product.names.indexOf(product_name.toLowerCase()) > -1) {
+
+        }*/
       }
     });
 

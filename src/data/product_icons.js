@@ -36,15 +36,6 @@ export default {
       ]
     },
     {
-      icon: "egg",
-      names: [
-        "egg",
-        "eggs",
-        "ei",
-        "eier"
-      ]
-    },
-    {
       icon: "popcorn",
       names: [
         "popcorn",
@@ -61,6 +52,69 @@ export default {
         "brote",
         "toast",
         "toasts"
+      ]
+    },
+    {
+      icon: "fish",
+      names: [
+        "fish",
+        "fisch",
+        "lachs",
+        "salmon",
+        "forelle"
+      ]
+    },
+    {
+      icon: "carrot",
+      names: [
+        "carrot",
+        "carrots",
+        "Karotte",
+        "Karotten",
+        "Rüebli"
+      ]
+    },
+    {
+      icon: "pizza",
+      names: [
+        "pizza",
+        "pizzas"
+      ]
+    },
+    {
+      icon: "pumpkin",
+      names: [
+        "pumpkin",
+        "pumpkins",
+        "Kürbis",
+        "Kürbisse"
+      ]
+    },
+    {
+      icon: "drumstick",
+      names: [
+        "drumstick",
+        "poulet",
+        "poulet leg",
+        "poulet bein"
+      ]
+    },
+    {
+      icon: "steak",
+      names: [
+        "steak",
+        "fleisch",
+        "bbq",
+        "filet"
+      ]
+    },
+    {
+      icon: "egg",
+      names: [
+        "egg",
+        "eggs",
+        "ei",
+        "eier"
       ]
     }
   ]
