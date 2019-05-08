@@ -15,10 +15,14 @@ let app = '';
 firebase.initializeApp({
   apiKey: "AIzaSyD51ycwqznba2t3nw6-CUP6Hn6KBpG0Fw8",
   authDomain: "shoppinglist-schmuckli.firebaseapp.com",
-  databaseURL: "https://shoppinglist-schmuckli.firebaseio.com/",
+  databaseURL: "https://shoppinglist-schmuckli.firebaseio.com",
+  projectId: "shoppinglist-schmuckli",
   storageBucket: "shoppinglist-schmuckli.appspot.com",
-  projectId: "shoppinglist-schmuckli"
+  messagingSenderId: "762486583011",
+  appId: "1:762486583011:web:fadba23f4cc9b98c"
 });
+
+firebase.performance();
 
 //Offline Persistence for FireStore
 firebase.firestore().enablePersistence()
