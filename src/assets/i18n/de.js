@@ -41,7 +41,10 @@ export default {
     password: "Passwort",
     newPassword: "Neues Passwort",
     newPasswordRepeat: "Neues Passwort wiederholen",
-    language: "Sprache"
+    language: "Sprache",
+    migrate: "Migrieren",
+    migrateNewAccount: "Zu einem neuen Account migrieren",
+    migrateNewAccountDescription: "Wenn du diesen Account auch auf anderen Geräten benutzen möchtest, dann kannst du hier ein Login erstellen."
   },
   list: {
     edit: "Bearbeiten",
@@ -68,7 +71,8 @@ export default {
     register: "Registrieren",
     passwordRepeat: "Passwort wiederholen",
     dontHaveAnAccount: "Noch kein Konto?",
-    alreadyHaveAnAccount: "Schon ein Konto?"
+    alreadyHaveAnAccount: "Schon ein Konto?",
+    tryNow: "Jetzt probieren ohne Login"
   },
   notification: {
     loginSuccessful: "Anmelden erfolgreich.",
@@ -92,6 +96,8 @@ export default {
     saved: "Gespeichert!",
     deleted: "Gelöscht!",
     imported: "Importiert!",
-    thereWasAnErrorWhileImporting: "Es ist ein Fehler während dem Import aufgetreten."
+    thereWasAnErrorWhileImporting: "Es ist ein Fehler während dem Import aufgetreten.",
+    thereWasAnError: "Es ist ein Fehler aufgetreten.",
+    migrationSuccessful: "Die Migration war erfolgreich."
   }
 }

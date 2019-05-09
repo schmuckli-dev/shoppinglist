@@ -41,7 +41,10 @@ export default {
     password: "Password",
     newPassword: "New password",
     newPasswordRepeat: "New password repeat",
-    language: "Language"
+    language: "Language",
+    migrate: "Migrate",
+    migrateNewAccount: "Migrate to a new account",
+    migrateNewAccountDescription: "To use this account also on other devices, you should create an account. Here you have the possibility to simply migrate to an email and password option."
   },
   list: {
     edit: "Edit",
@@ -77,7 +80,8 @@ export default {
     register: "Register",
     passwordRepeat: "Repeat password",
     dontHaveAnAccount: "Don't have an account?",
-    alreadyHaveAnAccount: "Already have an account?"
+    alreadyHaveAnAccount: "Already have an account?",
+    tryNow: "Try now without login"
   },
   notification: {
     loginSuccessful: "Login successful.",
@@ -101,6 +105,8 @@ export default {
     saved: "Saved!",
     deleted: "Deleted!",
     imported: "Imported!",
-    thereWasAnErrorWhileImporting: "There was an error while importing the file. Please check your file."
+    thereWasAnErrorWhileImporting: "There was an error while importing the file. Please check your file.",
+    thereWasAnError: "There was an error.",
+    migrationSuccessful: "The migration was successful."
   }
 }
