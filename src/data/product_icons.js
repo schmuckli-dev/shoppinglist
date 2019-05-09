@@ -167,6 +167,47 @@ export default {
       ]
     },
     {
+      icon: "wine-bottle",
+      names: [
+        "wine",
+        "wein",
+        "weine",
+        "flasche",
+        "bottle",
+        "mineral",
+        "mineralwasser",
+        "coca cola",
+        "coke",
+        "eistee",
+        "ice tea",
+        "iceatea",
+        "rivella",
+        "sprite",
+        "7up",
+        "7 up"
+      ]
+    },
+    {
+      icon: "coffee",
+      names: [
+        "coffee",
+        "kaffee",
+        "eiskaffee",
+        "ice coffee",
+        "icecoffee",
+        "tee",
+        "tea"
+      ]
+    },
+    {
+      icon: "beer",
+      names: [
+        "beer",
+        "bier",
+        "biere"
+      ]
+    },
+    {
       icon: "egg",
       names: [
         "egg",
