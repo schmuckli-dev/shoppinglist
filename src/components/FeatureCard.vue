@@ -31,7 +31,7 @@
       </v-list-tile>
     </v-list>
     <v-card-actions>
-      <v-btn flat @click="loginAnonymously">{{ $t("login.tryNow") }}</v-btn>
+      <v-btn flat @click="loginAnonymously"><v-icon>keyboard_arrow_right</v-icon> {{ $t("login.tryNow") }}</v-btn>
     </v-card-actions>
   </v-card>
 </template>
