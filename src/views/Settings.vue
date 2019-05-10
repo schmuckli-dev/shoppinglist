@@ -59,6 +59,10 @@
         </v-layout>
         <v-btn type="submit">{{ $t('general.save') }}</v-btn>
       </v-form>
+      <h3>{{ $t("settings.linkAccounts") }}</h3>
+      <p>{{ $t("settings.linkAccountsDescription") }}</p>
+      <v-btn type="button" v-if="!isGoogleLinked" @click="linkGoogle">{{ $t('settings.linkGoogle') }}</v-btn>
+      <v-btn type="button" v-if="isGoogleLinked" color="#24919B" style="color:white;" @click="unlinkGoogle">{{ $t('settings.unlinkGoogle') }}</v-btn>
     </div>
     <div v-else>
       <h3>{{ $t("settings.migrateNewAccount") }}</h3>
@@ -105,7 +109,9 @@ export default {
       language: getLanguage(),
 
       migrateEmail: "",
-      migratePassword: ""
+      migratePassword: "",
+
+      isGoogleLinked: false
     }
   },
   computed: {
@@ -118,6 +124,17 @@ export default {
     isAnonymous(){
       return firebase.auth().currentUser.isAnonymous;
     }
+  },
+  mounted(){
+    var global_this = this;
+
+    firebase.auth().currentUser.providerData.forEach(function(provider){
+      switch(provider.providerId){
+        case "google.com":
+          global_this.isGoogleLinked = true;
+          break;
+      }
+    });
   },
   methods: {
     back(){
@@ -175,6 +192,27 @@ export default {
           StoreMod.showNotification(global_this.$t("notification.thereWasAnError") + ": " + err.message);
         });
       }
+    },
+    linkGoogle(){
+      var global_this = this;
+
+      var provider = new firebase.auth.GoogleAuthProvider();
+      firebase.auth().currentUser.linkWithPopup(provider).then(function() {
+        StoreMod.showNotification(global_this.$t("notification.theAccountHasBeenLinked"));
+        global_this.isGoogleLinked = true;
+      }).catch(function(error) {
+        StoreMod.showNotification(global_this.$t("notification.thereWasAnError") + ": " + error.message);
+      });
+    },
+    unlinkGoogle(){
+      var global_this = this;
+
+      firebase.auth().currentUser.unlink("google.com").then(function() {
+        StoreMod.showNotification(global_this.$t("notification.theAccountHasBeenUnlinked"));
+        global_this.isGoogleLinked = false;
+      }).catch(function(error) {
+        StoreMod.showNotification(global_this.$t("notification.thereWasAnError") + ": " + error.message);
+      });
     }
   }
 }

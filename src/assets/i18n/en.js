@@ -44,7 +44,11 @@ export default {
     language: "Language",
     migrate: "Migrate",
     migrateNewAccount: "Migrate to a new account",
-    migrateNewAccountDescription: "To use this account also on other devices, you should create an account. Here you have the possibility to simply migrate to an email and password option."
+    migrateNewAccountDescription: "To use this account also on other devices, you should create an account. Here you have the possibility to simply migrate to an email and password option.",
+    linkAccounts: "Link accounts",
+    linkAccountsDescription: "Link here your different account in order to use even more features.",
+    linkGoogle: "Link Google",
+    unlinkGoogle: "Unlink Google"
   },
   list: {
     edit: "Edit",
@@ -107,6 +111,8 @@ export default {
     imported: "Imported!",
     thereWasAnErrorWhileImporting: "There was an error while importing the file. Please check your file.",
     thereWasAnError: "There was an error.",
-    migrationSuccessful: "The migration was successful."
+    migrationSuccessful: "The migration was successful.",
+    theAccountHasBeenUnlinked: "The account has been unlinked.",
+    theAccountHasBeenLinked: "The account has been linked."
   }
 }
