@@ -197,9 +197,22 @@ export default {
       var global_this = this;
 
       var provider = new firebase.auth.GoogleAuthProvider();
-      firebase.auth().currentUser.linkWithPopup(provider).then(function() {
-        StoreMod.showNotification(global_this.$t("notification.theAccountHasBeenLinked"));
-        global_this.isGoogleLinked = true;
+      firebase.auth().currentUser.linkWithPopup(provider).then(function(result) {
+
+        //Search first for the Google provider
+        result.user.providerData.forEach(function(provider){
+          if(provider.providerId === "google.com"){
+
+            //Store the Gmail address in to the separate collection
+            var gmail = provider.email;
+            firebase.firestore().collection("google_users").doc(gmail).set({
+              uid: result.user.uid
+            }).then(function(){
+              StoreMod.showNotification(global_this.$t("notification.theAccountHasBeenLinked"));
+              global_this.isGoogleLinked = true;
+            });
+          }
+        });
       }).catch(function(error) {
         StoreMod.showNotification(global_this.$t("notification.thereWasAnError") + ": " + error.message);
       });
