@@ -208,6 +208,14 @@ export default {
       ]
     },
     {
+      icon: "salad",
+      name: [
+        "salad",
+        "salat",
+        "eisberg"
+      ]
+    }
+    {
       icon: "egg",
       names: [
         "egg",
