@@ -209,12 +209,12 @@ export default {
     },
     {
       icon: "salad",
-      name: [
+      names: [
         "salad",
         "salat",
         "eisberg"
       ]
-    }
+    },
     {
       icon: "egg",
       names: [
