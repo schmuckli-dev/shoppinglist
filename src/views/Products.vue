@@ -117,7 +117,7 @@ export default {
           var batch = db.batch();
           rows.forEach(function(row){
             var cols = row.split(",");
-            if(cols.length == 2){
+            if(cols.length == 2 && cols[0] !== ""){
               var barcode = cols[0].trim();
               var name = cols[1].trim();
               var currentRef = db.collection("users").doc(firebase.auth().currentUser.uid).collection("barcodes").doc(barcode);
