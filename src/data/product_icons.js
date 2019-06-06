@@ -223,6 +223,40 @@ export default {
         "ei",
         "eier"
       ]
+    },
+    {
+      icon: "lightbulb",
+      names: [
+        "bulb",
+        "lightbulb",
+        "lampe",
+        "glühbirne",
+        "led",
+        "e27",
+        "e14",
+        "gu10",
+        "halogen"
+      ]
+    },
+    {
+      icon: "socks",
+      names: [
+        "socks",
+        "sock",
+        "socken",
+        "socke",
+        "strumpf",
+        "strümpfe"
+      ]
+    },
+    {
+      icon: "toilet-paper",
+      names: [
+        "toiletpaper",
+        "toiletpapers",
+        "toilettenpapier",
+        "toilettepapier"
+      ]
     }
   ]
 }
