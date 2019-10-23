@@ -6,6 +6,8 @@ import App from './App.vue'
 import router from './router';
 import firebase from "firebase";
 
+import { sCAuth } from "schmucklicloud_auth";
+
 Vue.config.productionTip = false
 
 Vue.use(VueI18n);
@@ -22,21 +24,12 @@ firebase.initializeApp({
   appId: "1:762486583011:web:fadba23f4cc9b98c"
 });
 
-firebase.performance();
+window.sCAuth = new sCAuth(
+  "883f26f113c50dc96955a342c07d8e8e5b740b38",
+  "11d0e9ca9cbd9a2903fbec28b1c5fdfc2d23bb3dc04c47e7adb5f5feb618b23f"
+);
 
-//Offline Persistence for FireStore
-firebase.firestore().enablePersistence()
-.catch(function(err) {
-    if (err.code == 'failed-precondition') {
-        // Multiple tabs open, persistence can only be enabled
-        // in one tab at a a time.
-        // ...
-    } else if (err.code == 'unimplemented') {
-        // The current browser does not support all of the
-        // features required to enable persistence
-        // ...
-    }
-});
+firebase.performance();
 
 const i18n = new VueI18n({
   locale: getLanguage(), // set locale
@@ -44,13 +37,11 @@ const i18n = new VueI18n({
   messages: translations // set locale messages
 });
 
-firebase.auth().onAuthStateChanged(() => {
-  if (!app) {
-    /* eslint-disable no-new */
-    app = new Vue({
-      router,
-      i18n,
-      render: h => h(App)
-    }).$mount('#app');
-  }
-});
+if (!app) {
+  /* eslint-disable no-new */
+  app = new Vue({
+    router,
+    i18n,
+    render: h => h(App)
+  }).$mount('#app');
+}

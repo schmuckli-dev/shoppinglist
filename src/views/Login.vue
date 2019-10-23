@@ -6,15 +6,14 @@
           <v-card class="form_card">
             <div style="width:100%;">
               <h2>{{ $t('login.login') }}</h2>
-              <br>
-              <v-text-field outline
-                v-model="email"
-                :label="$t('settings.email')" required
-              ></v-text-field>
-              <v-text-field outline
+              <br />
+              <v-text-field outline v-model="email" :label="$t('settings.email')" required></v-text-field>
+              <v-text-field
+                outline
                 v-model="password"
                 type="password"
-                :label="$t('settings.password')" required
+                :label="$t('settings.password')"
+                required
               ></v-text-field>
             </div>
             <v-card-actions right>
@@ -33,48 +32,51 @@
 
 <script>
 import { StoreMod } from "../store.js";
-import firebase from "firebase";
 import FeatureCard from "../components/FeatureCard";
 
 export default {
   name: "Login",
-  data(){
+  data() {
     return {
       //Login
       email: "",
-      password: "",
-    }
+      password: ""
+    };
   },
   components: {
     FeatureCard
   },
   methods: {
-    login(event){
+    login(event) {
       event.preventDefault();
 
       var global_this = this;
-      if(this.$refs.formLogin.validate()){
-        if(navigator.onLine){
-          firebase.auth().signInWithEmailAndPassword(this.email.trim(), this.password).then(
-            function(){
-              global_this.$router.replace('home');
-              StoreMod.showNotification("notification.loginSuccessful");
-            },
-            function(){
-              StoreMod.showNotification("notification.emailOrPasswordIsWrong");
-            }
-          );
+      if (this.$refs.formLogin.validate()) {
+        if (navigator.onLine) {
+          window.sCAuth
+            .authorizeEmailPassword(this.email.trim(), this.password)
+            .then(function(response) {
+              if (response.isOK) {
+                global_this.$router.replace("home");
+                StoreMod.showNotification("notification.loginSuccessful");
+              } else {
+                StoreMod.showNotification(response.message);
+              }
+            })
+            .catch(function(error) {
+              StoreMod.showNotification(error.message);
+            });
         } else {
           StoreMod.showNotification("notification.youCantLoginWhileOffline");
         }
       }
       return false;
     },
-    goToRegister(){
+    goToRegister() {
       this.$router.replace("register");
     }
   }
-}
+};
 </script>
 <style>
 h2 {

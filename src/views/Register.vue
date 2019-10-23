@@ -38,7 +38,6 @@
 
 <script>
 import { StoreMod } from "../store.js";
-import firebase from "firebase";
 import FeatureCard from "../components/FeatureCard";
 
 export default {
@@ -61,15 +60,18 @@ export default {
       if(this.$refs.formRegister.validate()){
         if (this.Rpassword === this.RpasswordRepeat) {
           if(navigator.onLine){
-            firebase.auth().createUserWithEmailAndPassword(this.Remail.trim(), this.Rpassword).then(
-              function(){
-                global_this.$router.replace('home');
-                StoreMod.showNotification("notification.registrationSuccessful");
-              },
-              function(error){
-                StoreMod.showNotification(error);
+            window.sCAuth.registerEmailPassword(this.Remail.trim(), this.Rpassword, window.navigator.language.substring(0, 2)).then(
+              function(response){
+                if (response.isOK) {
+                  global_this.$router.replace('login');
+                  StoreMod.showNotification("notification.registrationSuccessful");
+                } else {
+                  StoreMod.showNotification(response.message)
+                }
               }
-            );
+            ).catch(function(error){
+              StoreMod.showNotification(error.message);
+            });
           } else {
             StoreMod.showNotification("notification.cantRegisterWhileOffline");
           }
