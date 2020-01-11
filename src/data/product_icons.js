@@ -317,6 +317,13 @@ export default {
         "couvert",
         "envelope"
       ] 
-    }
+    }, 
+    {
+      icon: "pills",
+      names: [
+        "tabletten",
+        "tabl."
+      ]
+   } 
   ]
 }
