@@ -257,6 +257,26 @@ export default {
         "toilettenpapier",
         "toilettepapier"
       ]
+    },
+    {
+      icon: "toothbrush",
+      names: [
+        "zahnbürste",
+        "toothbrush",
+        "zahnbürsten",
+        "toothbrushes",
+        "tooth brushes"
+      ]
+    },
+    {
+      icon: "tshirt",
+      names: [
+        "tshirt",
+        "t-shirt",
+        "kleidung",
+        "clothes",
+        "kleider"
+      ]
     }
   ]
 }

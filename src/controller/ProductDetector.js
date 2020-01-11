@@ -10,7 +10,7 @@ export default class ProductDetector {
       if (!result_found) {
         product.names.forEach(function(name){
           if(product_name.toLowerCase() === name.toLowerCase()) {
-            result = "fal fa-" + product.icon;
+            result = "fad fa-" + product.icon;
             result_found = true;
           }
         })
@@ -23,7 +23,7 @@ export default class ProductDetector {
         if (!result_found) {
           product.names.forEach(function(name){
             if(name.toLowerCase().indexOf(product_name.toLowerCase()) > -1 || product_name.toLowerCase().indexOf(name.toLowerCase()) > -1) {
-              result = "fal fa-" + product.icon;
+              result = "fad fa-" + product.icon;
               result_found = true;
             }
           })
