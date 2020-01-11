@@ -277,6 +277,38 @@ export default {
         "clothes",
         "kleider"
       ]
+    },
+    {
+      icon: "watch",
+      names: [
+        "clock",
+        "uhr",
+        "armbanduhr",
+        "wanduhr",
+        "wristband",
+        "watch",
+        "rolex",
+        "fitbit"
+      ]
+    },
+    {
+      icon: "duck",
+      names: [
+        "duck",
+        "ente",
+        "enten",
+        "ducks"
+      ]
+    },
+    {
+      icon: "pie",
+      names: [
+        "pie",
+        "pies",
+        "kuchen",
+        "torte",
+        "torten"
+      ]
     }
   ]
 }
