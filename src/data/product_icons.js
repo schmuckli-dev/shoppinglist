@@ -309,6 +309,14 @@ export default {
         "torte",
         "torten"
       ]
+    },
+    {
+      icon: "envelope",
+      names: [
+        "brief",
+        "couvert",
+        "envelope"
+      ] 
     }
   ]
 }
