@@ -6,7 +6,7 @@ export default {
         },
         {
             icon: "cheese-swiss",
-            names: ["käse", "emmentaler", "käseplatte", "cheese", "käsefondue"]
+            names: ["käse", "emmentaler", "käseplatte", "cheese", "käsefondue", "gerieben", "padano"]
         },
         {
             icon: "corn",
@@ -101,7 +101,8 @@ export default {
                 "rivella",
                 "sprite",
                 "7up",
-                "7 up"
+                "7 up",
+                "öl"
             ]
         },
         {
@@ -213,6 +214,10 @@ export default {
         {
           icon: "fan",
           names: ["lüfter", "dyson", "fan"]
+        },
+        {
+          icon: "cat",
+          names: ["cat", "katzen", "katzenfutter", "sheba", "wiskas"]
         }
     ]
 };
