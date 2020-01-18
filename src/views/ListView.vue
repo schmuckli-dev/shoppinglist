@@ -8,8 +8,27 @@
         <v-btn @click="openEditDialog" flat><v-icon style="margin-right:10px;">edit</v-icon> {{ $t("list.edit") }}</v-btn>
       </v-flex>
     </v-layout>
-    <h1 class="form_card">{{ currentListName }}</h1>
-    <v-layout row wrap v-if="!isEmpty">
+    <v-layout row v-if="!isEmpty">
+      <v-flex xs6>
+        <h1 class="form_card">{{ currentListName }}</h1>
+      </v-flex>
+      <v-flex xs6 class="text-right">
+        <v-switch
+          v-model="gridViewActive"
+          :label="gridViewActive ? $t('general.gridView') : $t('general.listView')"
+          color="primary"
+        ></v-switch>
+      </v-flex>
+    </v-layout>
+    <v-layout row wrap v-if="!isEmpty && gridViewActive">
+      <v-flex xs6 sm4 md3 lg2 v-for="product in products" :key="product.id">
+        <Product :amount="product.amount" :name="product.name" :product_id="product.id" :purchased="product.purchased" :list_id="currentListId" />
+      </v-flex>
+      <v-flex xs6 sm4 md3 lg2 v-for="product in purchased_products" :key="product.id" class="faded">
+        <Product :amount="product.amount" :name="product.name" :product_id="product.id" :purchased="product.purchased" :list_id="currentListId" />
+      </v-flex>
+    </v-layout>
+    <v-layout row wrap v-if="!isEmpty && !gridViewActive">
       <v-flex xs6 sm4 md3 lg2 v-for="product in products" :key="product.id">
         <Product :amount="product.amount" :name="product.name" :product_id="product.id" :purchased="product.purchased" :list_id="currentListId" />
       </v-flex>
@@ -98,7 +117,8 @@ export default {
       dialogDelete: false,
       dialogEditListName: Store.currentList.name,
 
-      isLoading: true
+      isLoading: true,
+      gridViewActive: true
     }
   },
   mounted(){

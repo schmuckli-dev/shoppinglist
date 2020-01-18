@@ -15,7 +15,9 @@ export default {
     optional: "Optional",
     thisIsAProjectBy: "Das ist ein Projekt von ",
     viewOnGithub: "Projekt auf Github",
-    moreAppsOn: "Mehr Apps auf"
+    moreAppsOn: "Mehr Apps auf",
+    gridView: "Kachelansicht",
+    listView: "Listenansicht"
   },
   app: {
     logout: "Abmelden",
