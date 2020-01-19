@@ -8,11 +8,11 @@
         <v-btn @click="openEditDialog" flat><v-icon style="margin-right:10px;">edit</v-icon> {{ $t("list.edit") }}</v-btn>
       </v-flex>
     </v-layout>
-    <v-layout row v-if="!isEmpty">
-      <v-flex xs6>
+    <v-layout align-center justify-space-between row v-if="!isEmpty">
+      <v-flex xs3>
         <h1 class="form_card">{{ currentListName }}</h1>
       </v-flex>
-      <v-flex xs6 class="text-right">
+      <v-flex lg2 md3 sm4 xs5 style="text-align:right;">
         <v-switch
           v-model="gridViewActive"
           :label="gridViewActive ? $t('general.gridView') : $t('general.listView')"
@@ -20,7 +20,8 @@
         ></v-switch>
       </v-flex>
     </v-layout>
-    <v-layout row wrap v-if="!isEmpty && gridViewActive">
+    <v-expand-transition>
+    <v-layout row wrap v-show="!isEmpty && gridViewActive">
       <v-flex xs6 sm4 md3 lg2 v-for="product in products" :key="product.id">
         <Product :amount="product.amount" :name="product.name" :product_id="product.id" :purchased="product.purchased" :list_id="currentListId" />
       </v-flex>
@@ -28,14 +29,17 @@
         <Product :amount="product.amount" :name="product.name" :product_id="product.id" :purchased="product.purchased" :list_id="currentListId" />
       </v-flex>
     </v-layout>
-    <v-layout row wrap v-if="!isEmpty && !gridViewActive">
-      <v-flex xs6 sm4 md3 lg2 v-for="product in products" :key="product.id">
-        <Product :amount="product.amount" :name="product.name" :product_id="product.id" :purchased="product.purchased" :list_id="currentListId" />
-      </v-flex>
-      <v-flex xs6 sm4 md3 lg2 v-for="product in purchased_products" :key="product.id" class="faded">
-        <Product :amount="product.amount" :name="product.name" :product_id="product.id" :purchased="product.purchased" :list_id="currentListId" />
-      </v-flex>
-    </v-layout>
+    </v-expand-transition>
+    <v-expand-transition>
+      <v-layout row wrap v-show="!isEmpty && !gridViewActive">
+        <v-flex xs12 v-for="product in products" :key="product.id">
+          <ProductListView :amount="product.amount" :name="product.name" :product_id="product.id" :purchased="product.purchased" :list_id="currentListId" />
+        </v-flex>
+        <v-flex xs12 v-for="product in purchased_products" :key="product.id" class="faded">
+          <ProductListView :amount="product.amount" :name="product.name" :product_id="product.id" :purchased="product.purchased" :list_id="currentListId" />
+        </v-flex>
+      </v-layout>
+    </v-expand-transition>
     <div v-if="isEmpty && !isLoading" style="text-align:center;margin-top:20px;">
       <v-icon style="font-size:100px;margin-bottom:10px;color:black;">mood_bad</v-icon><br>
       {{ $t("list.noProductsYet") }}
@@ -106,6 +110,7 @@
 import firebase from "firebase";
 import { Store, StoreMod } from "./../store";
 import Product from "./../components/Product";
+import ProductListView from "./../components/ProductListView";
 
 export default {
   name: "ListView",
@@ -122,6 +127,7 @@ export default {
     }
   },
   mounted(){
+    this.checkViewMode();
     if(Store.currentList.id == undefined){
       this.$router.replace("home");
     } else {
@@ -129,7 +135,8 @@ export default {
     }
   },
   components:{
-    Product
+    Product,
+    ProductListView
   },
   computed: {
     currentListId(){
@@ -194,6 +201,14 @@ export default {
       }).catch(function(){
         StoreMod.showNotification(global_this.$t("notification.thereWasAnErrorWhileDeleting"));
       });
+    },
+    checkViewMode() {
+      this.gridViewActive = window.localStorage.getItem("gridViewActive") || true;
+    }
+  },
+  watch: {
+    gridViewActive(value) {
+      window.localStorage.setItem("gridViewActive", value);
     }
   }
 }
