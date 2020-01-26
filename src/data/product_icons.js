@@ -217,7 +217,7 @@ export default {
         },
         {
           icon: "cat",
-          names: ["cat", "katzen", "katzenfutter", "sheba", "wiskas"]
+          names: ["cat", "katzen", "katzenfutter", "sheba", "wiskas", "büsi"]
         }
     ]
 };
