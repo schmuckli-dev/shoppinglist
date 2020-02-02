@@ -218,6 +218,10 @@ export default {
         {
           icon: "cat",
           names: ["cat", "katzen", "katzenfutter", "sheba", "wiskas", "büsi"]
+        },
+        {
+          icon: "crow",
+          names: ["vogel", "vögel", "bird"]
         }
     ]
 };
