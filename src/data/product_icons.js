@@ -222,6 +222,10 @@ export default {
         {
           icon: "crow",
           names: ["vogel", "vögel", "bird"]
-        }
+        },
+        {
+          icon: "lasso",
+          names: ["lasso", "schnur", "seil", "rope"]
+        } 
     ]
 };
