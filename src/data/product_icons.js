@@ -22,7 +22,7 @@ export default {
         },
         {
             icon: "bread-loaf",
-            names: ["bread", "breads", "brot", "brote", "toast", "toasts"]
+            names: ["bread", "breads", "brot", "brote", "toast", "toasts", "brötli"]
         },
         {
             icon: "fish",
